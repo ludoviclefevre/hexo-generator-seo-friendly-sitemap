@@ -1,0 +1,54 @@
+{
+  "name": "hexo-generator-google-friendly-sitemap",
+  "version": "0.0.1-pre",
+  "description": "Google friendly sitemap generator plugin for Hexo",
+  "main": "index",
+  "author": {
+    "name": "Ludovic LEFEVRE",
+    "email": "contact@ludoviclefevre.fr",
+    "url": "http://www.ludoviclefevre.fr"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ludoviclefevre/hexo-generator-google-friendly-sitemap.git"
+  },
+  "bugs": {
+    "url": "http://github.com/ludoviclefevre/hexo-generator-google-friendly-sitemap/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js",
+    "lib",
+    "view",
+    "README.md"
+  ],
+  "keywords": [
+    "hexo",
+    "sitemap",
+    "seo",
+    "google",
+    "generator"
+  ],
+  "dependencies": {
+    "ejs": "^1.0.0",
+    "utils-merge": "^1.0.0",
+    "lodash": "~3.6.0"
+  },
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "coveralls": "^2.11.2",
+    "gulp": "^3.8.9",
+    "gulp-istanbul": "^0.5.0",
+    "gulp-jshint": "^1.8.6",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-mocha": "^2.0.0",
+    "gulp-jscs": "1.4.0",
+    "hexo": "^3.0.0",
+    "jshint-stylish": "^1.0.0",
+    "mocha": "^2.0.1",
+    "rimraf": "^2.2.8"
+  },
+  "scripts": {
+    "test": "gulp test"
+  }
+}
