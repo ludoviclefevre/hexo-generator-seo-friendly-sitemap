@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <% indexes.forEach(function(index){ %>
+    <% items.forEach(function(item){ %>
     <sitemap>
-        <loc><%- encodeURI(index.url) %></loc>
-        <lastmod><%= index.lastModification.toISOString() %></lastmod>
+        <loc><%- encodeURI(item.url) %></loc>
+        <lastmod><%= item.lastModification.toISOString() %></lastmod>
     </sitemap>
     <% }) %>
 </sitemapindex>
