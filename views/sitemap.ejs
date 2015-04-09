@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-    <% posts.forEach(function(post){ %>
     <url>
-        <loc><%- encodeURI(post.permalink) %></loc>
-        <lastmod><%= post.updated.toISOString() || post.date.toISOString() %></lastmod>
+        <loc><%= url %></loc>
         <changefreq>daily</changefreq>
         <priority>1</priority>
+    </url>
+    <% items.forEach(function(item){ %>
+    <url>
+        <loc><%- encodeURI(item.permalink) %></loc>
+        <lastmod><%= post.updated.toISOString() || post.date.toISOString() %></lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
     </url>
     <% }) %>
 </urlset>
