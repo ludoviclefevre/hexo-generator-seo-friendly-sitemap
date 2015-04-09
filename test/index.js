@@ -28,12 +28,26 @@ describe('Sitemap generator', function () {
             path: 'sitemap.xml'
         };
 
-        var result = generator(hexo.locals.toObject());
+        generator(hexo.locals.toObject()).then(function(result) {
+            console.log(result);
+            result.path.should.eql('sitemap.xml');
+            result.data.should.eql(sitemapTmpl({
+                config: hexo.config,
+                posts: posts
+            }));
+        });
 
-        result.path.should.eql('sitemap.xml');
-        result.data.should.eql(sitemapTmpl({
-            config: hexo.config,
-            posts: posts
-        }));
+
+/*
+        getJSONFromSomewhere().then(function (jsonString) {
+            return JSON.parse(jsonString);
+        }).then(function (object) {
+            console.log("it was valid json: ", object);
+        }).catch(SyntaxError, function (e) {
+            console.log("don't be evil");
+        });
+        */
+
+
     });
 });

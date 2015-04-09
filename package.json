@@ -46,7 +46,8 @@
     "hexo": "^3.0.0",
     "jshint-stylish": "^1.0.0",
     "mocha": "^2.0.1",
-    "rimraf": "^2.2.8"
+    "rimraf": "^2.2.8",
+    "bluebird": "2.9.24"
   },
   "scripts": {
     "test": "gulp test"
