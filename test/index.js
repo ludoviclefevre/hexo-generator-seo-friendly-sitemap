@@ -23,7 +23,7 @@ describe('Sitemap generator', function () {
         });
     });
 
-    it('default', function () {
+    it('default', function (done) {
         hexo.config.sitemap = {
             path: 'sitemap.xml'
         };
@@ -35,7 +35,11 @@ describe('Sitemap generator', function () {
                 config: hexo.config,
                 posts: posts
             }));
-        });
+            done();
+        })
+            .catch(function(err) {
+              done(err);
+            });
 
 
 /*
