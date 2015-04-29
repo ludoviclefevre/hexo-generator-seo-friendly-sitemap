@@ -3,9 +3,12 @@ var Hexo = require('hexo');
 var ejs = require('ejs');
 var pathFn = require('path');
 var fs = require('fs');
+var _ = require('lodash');
 
 var sitemapSrc = pathFn.join(__dirname, '../views/sitemap.ejs');
-var sitemapTmpl = ejs.compile(fs.readFileSync(sitemapSrc, 'utf8'));
+var sitemapTmpl = ejs.compile(fs.readFileSync(sitemapSrc, 'utf8'), {
+    filename: sitemapSrc
+});
 
 describe('Sitemap generator', function () {
     var hexo = new Hexo(__dirname, {silent: true});
@@ -29,12 +32,22 @@ describe('Sitemap generator', function () {
         };
 
         generator(hexo.locals.toObject()).then(function (result) {
-            console.log('coucou', result);
-            result.path.should.eql('sitemap.xml');
-            result.data.should.eql(sitemapTmpl({
+            result.should.be.a('array');
+
+            var indexSitemap = _.find(result, {path: 'index-sitemap.xml'});
+            should.exist(indexSitemap);
+            should.exist(indexSitemap.data);
+
+            var postSitemap = _.find(result, {path: 'post-sitemap.xml'});
+            should.exist(postSitemap);
+            should.exist(postSitemap.data);
+
+            /*
+            indexSitemap.data.should.eql(sitemapTmpl({
                 config: hexo.config,
                 posts: posts
             }));
+            */
             done();
         })
             .catch(function (err) {
