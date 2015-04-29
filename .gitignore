@@ -1,7 +1,6 @@
 # Logs
 logs
 *.log
-coverage
 
 # Runtime data
 pids
