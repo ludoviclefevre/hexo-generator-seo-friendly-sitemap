@@ -10,7 +10,7 @@ var sitemapTmpl = ejs.compile(fs.readFileSync(sitemapSrc, 'utf8'));
 describe('Sitemap generator', function () {
     var hexo = new Hexo(__dirname, {silent: true});
     var Post = hexo.model('Post');
-    var generator = require('../lib/generator').bind(hexo);
+    var generator = require(pathFn.join(__dirname, '../lib/generator')).bind(hexo);
     var posts;
 
     before(function () {
@@ -28,8 +28,8 @@ describe('Sitemap generator', function () {
             path: 'sitemap.xml'
         };
 
-        generator(hexo.locals.toObject()).then(function(result) {
-            console.log(result);
+        generator(hexo.locals.toObject()).then(function (result) {
+            console.log('coucou', result);
             result.path.should.eql('sitemap.xml');
             result.data.should.eql(sitemapTmpl({
                 config: hexo.config,
@@ -37,20 +37,20 @@ describe('Sitemap generator', function () {
             }));
             done();
         })
-            .catch(function(err) {
-              done(err);
+            .catch(function (err) {
+                done(err);
             });
 
 
-/*
-        getJSONFromSomewhere().then(function (jsonString) {
-            return JSON.parse(jsonString);
-        }).then(function (object) {
-            console.log("it was valid json: ", object);
-        }).catch(SyntaxError, function (e) {
-            console.log("don't be evil");
-        });
-        */
+        /*
+         getJSONFromSomewhere().then(function (jsonString) {
+         return JSON.parse(jsonString);
+         }).then(function (object) {
+         console.log("it was valid json: ", object);
+         }).catch(SyntaxError, function (e) {
+         console.log("don't be evil");
+         });
+         */
 
 
     });
