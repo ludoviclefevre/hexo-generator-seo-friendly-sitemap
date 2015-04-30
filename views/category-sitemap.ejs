@@ -5,10 +5,10 @@
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
-    <% posts.forEach(function(item){ %>
+    <% categories.forEach(function(category){ %>
     <url>
-        <loc><%- encodeURI(item.permalink) %></loc>
-        <lastmod><%= item.updated.toISOString() || item.date.toISOString() %></lastmod>
+        <loc><%- encodeURI(category.permalink) %></loc>
+        <lastmod><%= category.updated.toISOString() || category.date.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
     </url>

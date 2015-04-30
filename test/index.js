@@ -1,37 +1,78 @@
-var should = require('chai').should();
+var chai = require("chai");
+var chaiAsPromised = require("chai-as-promised");
+var should = chai.should();
 var Hexo = require('hexo');
 var ejs = require('ejs');
-var pathFn = require('path');
-var fs = require('fs');
+var path = require('path');
 var _ = require('lodash');
+var Promise = require('bluebird');
+var fs = Promise.promisifyAll(require('fs'));
+var moment = require('moment');
 
-var sitemapSrc = pathFn.join(__dirname, '../views/sitemap.ejs');
-var sitemapTmpl = ejs.compile(fs.readFileSync(sitemapSrc, 'utf8'), {
-    filename: sitemapSrc
-});
+var readFileOptions = {
+    encoding: 'utf8'
+};
+
+//chai.use(chaiAsPromised);
 
 describe('Sitemap generator', function () {
     var hexo = new Hexo(__dirname, {silent: true});
     var Post = hexo.model('Post');
-    var generator = require(pathFn.join(__dirname, '../lib/generator')).bind(hexo);
-    var posts;
+    var Page = hexo.model('Page');
+    var generator = require(path.join(__dirname, '../lib/generator')).bind(hexo);
+    var posts = [
+        {source: 'foo', slug: 'foo', path: 'foo', updated: moment.utc([2015, 0, 1, 8]).toDate()},
+        {source: 'bar', slug: 'bar', path: 'bar', updated: moment.utc([2015, 0, 2, 14]).toDate()},
+        {source: 'baz', slug: 'baz', path: 'baz', updated: moment.utc([2015, 0, 3, 16]).toDate()}
+    ];
+    var pages = [
+            {source: 'Page 1', slug: 'Page 1', updated: moment.utc([2014, 11, 10, 9]).toDate(), path: 'page1'},
+            {source: 'Page 2', slug: 'Page 2', updated: moment.utc([2014, 11, 15, 10]).toDate(), path: 'page2'},
+            {source: 'Page 3', slug: 'Page 3', updated: moment.utc([2014, 11, 20, 11]).toDate(), path: 'page3'}
+        ],
+        locals;
+
+    var insertPosts =function() {
+        return Post.insert(posts)
+            .then(function(insertedPosts) {
+                return Promise.all([
+                    insertedPosts[0].setCategories(['Cat1']),
+                    insertedPosts[0].setCategories(['Cat2']),
+                    insertedPosts[1].setCategories(['Cat1'])
+                ]);
+            });
+    };
 
     before(function () {
-        return Post.insert([
-            {source: 'foo', slug: 'foo', updated: 1e8},
-            {source: 'bar', slug: 'bar', updated: 1e8 + 1},
-            {source: 'baz', slug: 'baz', updated: 1e8 - 1}
-        ]).then(function (data) {
-            posts = Post.sort('-updated');
-        });
+        return Promise.all([
+            insertPosts(),
+            Page.insert(pages)
+        ])
+            .then(function () {
+                locals = hexo.locals.toObject();
+            });
     });
 
-    it('default', function (done) {
+    it('should generate all sitemap files if posts, pages, categories and tags are defined', function () {
         hexo.config.sitemap = {
             path: 'sitemap.xml'
         };
 
-        generator(hexo.locals.toObject()).then(function (result) {
+        var expectedDirectory = path.join(__dirname, 'expected');
+
+        var expectedIndexFilePath = path.join(expectedDirectory, 'full-index-sitemap.xml');
+        var expectedPostFilePath = path.join(expectedDirectory, 'full-post-sitemap.xml');
+        var expectedPageFilePath = path.join(expectedDirectory, 'full-page-sitemap.xml');
+        var expectedCategoryFilePath = path.join(expectedDirectory, 'full-category-sitemap.xml');
+        var expectedTagFilePath = path.join(expectedDirectory, 'full-tag-sitemap.xml');
+
+        var expectedIndexSitemap = fs.readFileAsync(expectedIndexFilePath, readFileOptions);
+        var expectedPostSitemap = fs.readFileAsync(expectedPostFilePath, readFileOptions);
+        var expectedPageSitemap = fs.readFileAsync(expectedPageFilePath, readFileOptions);
+        //var expectedCategorySitemap = fs.readFileAsync(expectedCategoryFilePath, readFileOptions);
+        //var expectedTagSitemap = fs.readFileAsync(expectedTagFilePath, readFileOptions);
+
+        var checkAssertions = function (result) {
             result.should.be.a('array');
 
             var indexSitemap = _.find(result, {path: 'index-sitemap.xml'});
@@ -42,29 +83,33 @@ describe('Sitemap generator', function () {
             should.exist(postSitemap);
             should.exist(postSitemap.data);
 
-            /*
-            indexSitemap.data.should.eql(sitemapTmpl({
-                config: hexo.config,
-                posts: posts
-            }));
-            */
-            done();
-        })
-            .catch(function (err) {
-                done(err);
-            });
+            var pageSitemap = _.find(result, {path: 'page-sitemap.xml'});
+            should.exist(pageSitemap);
+            should.exist(pageSitemap.data);
 
+            var categorySitemap = _.find(result, {path: 'category-sitemap.xml'});
+            should.exist(categorySitemap);
+            should.exist(categorySitemap.data);
 
-        /*
-         getJSONFromSomewhere().then(function (jsonString) {
-         return JSON.parse(jsonString);
-         }).then(function (object) {
-         console.log("it was valid json: ", object);
-         }).catch(SyntaxError, function (e) {
-         console.log("don't be evil");
-         });
-         */
+            var tagSitemap = _.find(result, {path: 'tag-sitemap.xml'});
+            should.exist(tagSitemap);
+            should.exist(tagSitemap.data)
 
+            //console.log(indexSitemap.data);
+            return Promise.all([
+                expectedIndexSitemap.then(function (buffer) {
+                    indexSitemap.data.should.equal(buffer);
+                }),
+                expectedPostSitemap.then(function (buffer) {
+                    postSitemap.data.should.equal(buffer);
+                }),
+                expectedPageSitemap.then(function (buffer) {
+                    pageSitemap.data.should.equal(buffer);
+                })
+            ]);
+        };
 
+        return generator(locals)
+            .then(checkAssertions);
     });
 });
