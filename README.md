@@ -1,3 +1,3 @@
-# hexo-generator-google-friendly-sitemap
+# hexo-generator-seo-friendly-sitemap
 
 Not working yet...
