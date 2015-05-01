@@ -1,7 +1,7 @@
 {
-  "name": "hexo-generator-google-friendly-sitemap",
+  "name": "hexo-generator-seo-friendly-sitemap",
   "version": "0.0.1-pre",
-  "description": "Google friendly sitemap generator plugin for Hexo",
+  "description": "SEO friendly sitemap generator plugin for Hexo",
   "main": "index",
   "author": {
     "name": "Ludovic LEFEVRE",
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ludoviclefevre/hexo-generator-google-friendly-sitemap.git"
+    "url": "https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap.git"
   },
   "bugs": {
-    "url": "http://github.com/ludoviclefevre/hexo-generator-google-friendly-sitemap/issues"
+    "url": "http://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap/issues"
   },
   "license": "MIT",
   "files": [
