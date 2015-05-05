@@ -96,6 +96,7 @@ describe('Sitemap generator', function () {
             should.exist(tagSitemap.data)
 
             //console.log(indexSitemap.data);
+            fs.writeFileAsync(expectedCategoryFilePath, categorySitemap.data);
             return Promise.all([
                 expectedIndexSitemap.then(function (buffer) {
                     indexSitemap.data.should.equal(buffer);
@@ -105,7 +106,10 @@ describe('Sitemap generator', function () {
                 }),
                 expectedPageSitemap.then(function (buffer) {
                     pageSitemap.data.should.equal(buffer);
-                })
+                }),
+                //expectedCategoryFilePath.then(function (buffer) {
+                //    categorySitemap.data.should.equal(buffer);
+                //})
             ]);
         };
 
