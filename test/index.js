@@ -38,7 +38,10 @@ describe('Sitemap generator', function () {
                 return Promise.all([
                     insertedPosts[0].setCategories(['Cat1']),
                     insertedPosts[0].setCategories(['Cat2']),
-                    insertedPosts[1].setCategories(['Cat1'])
+                    insertedPosts[1].setCategories(['Cat1']),
+                    insertedPosts[0].setTags(['Tag1']),
+                    insertedPosts[0].setTags(['Tag2']),
+                    insertedPosts[1].setTags(['Tag'])
                 ]);
             });
     };
@@ -69,7 +72,7 @@ describe('Sitemap generator', function () {
         var expectedIndexSitemap = fs.readFileAsync(expectedIndexFilePath, readFileOptions);
         var expectedPostSitemap = fs.readFileAsync(expectedPostFilePath, readFileOptions);
         var expectedPageSitemap = fs.readFileAsync(expectedPageFilePath, readFileOptions);
-        //var expectedCategorySitemap = fs.readFileAsync(expectedCategoryFilePath, readFileOptions);
+        var expectedCategorySitemap = fs.readFileAsync(expectedCategoryFilePath, readFileOptions);
         //var expectedTagSitemap = fs.readFileAsync(expectedTagFilePath, readFileOptions);
 
         var checkAssertions = function (result) {
@@ -93,10 +96,10 @@ describe('Sitemap generator', function () {
 
             var tagSitemap = _.find(result, {path: 'tag-sitemap.xml'});
             should.exist(tagSitemap);
-            should.exist(tagSitemap.data)
+            should.exist(tagSitemap.data);
 
             //console.log(indexSitemap.data);
-            fs.writeFileAsync(expectedCategoryFilePath, categorySitemap.data);
+            fs.writeFileAsync(expectedTagFilePath, tagSitemap.data);
             return Promise.all([
                 expectedIndexSitemap.then(function (buffer) {
                     indexSitemap.data.should.equal(buffer);
@@ -107,9 +110,9 @@ describe('Sitemap generator', function () {
                 expectedPageSitemap.then(function (buffer) {
                     pageSitemap.data.should.equal(buffer);
                 }),
-                //expectedCategoryFilePath.then(function (buffer) {
-                //    categorySitemap.data.should.equal(buffer);
-                //})
+                expectedCategorySitemap.then(function (buffer) {
+                    categorySitemap.data.should.equal(buffer);
+                })
             ]);
         };
 

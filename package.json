@@ -32,7 +32,7 @@
   "dependencies": {
     "ejs": "^2.3.1",
     "utils-merge": "^1.0.0",
-    "lodash": "~3.7.0"
+    "lodash": "~3.8.0"
   },
   "devDependencies": {
     "bluebird": "2.9.25",
@@ -46,10 +46,10 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-mocha": "^2.0.1",
     "hexo": "^3.0.1",
-    "jshint-stylish": "^1.0.1",
+    "jshint-stylish": "^1.0.2",
     "mocha": "^2.2.4",
     "moment": "^2.10.2",
-    "rimraf": "^2.3.2"
+    "rimraf": "^2.3.3"
   },
   "scripts": {
     "test": "gulp test"
