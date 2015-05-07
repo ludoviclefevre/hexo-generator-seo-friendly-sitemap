@@ -32,9 +32,9 @@ describe('Sitemap generator', function () {
         ],
         locals;
 
-    var insertPosts =function() {
+    var insertPosts = function () {
         return Post.insert(posts)
-            .then(function(insertedPosts) {
+            .then(function (insertedPosts) {
                 return Promise.all([
                     insertedPosts[0].setCategories(['Cat1']),
                     insertedPosts[0].setCategories(['Cat2']),
@@ -63,6 +63,13 @@ describe('Sitemap generator', function () {
 
         var expectedDirectory = path.join(__dirname, 'expected');
 
+        var expected = [{
+                'filename': 'index-sitemap.xml',
+                'testFilename': 'full-index-sitemap.xml'
+            }
+        ];
+
+
         var expectedIndexFilePath = path.join(expectedDirectory, 'full-index-sitemap.xml');
         var expectedPostFilePath = path.join(expectedDirectory, 'full-post-sitemap.xml');
         var expectedPageFilePath = path.join(expectedDirectory, 'full-page-sitemap.xml');
@@ -73,7 +80,7 @@ describe('Sitemap generator', function () {
         var expectedPostSitemap = fs.readFileAsync(expectedPostFilePath, readFileOptions);
         var expectedPageSitemap = fs.readFileAsync(expectedPageFilePath, readFileOptions);
         var expectedCategorySitemap = fs.readFileAsync(expectedCategoryFilePath, readFileOptions);
-        //var expectedTagSitemap = fs.readFileAsync(expectedTagFilePath, readFileOptions);
+        var expectedTagSitemap = fs.readFileAsync(expectedTagFilePath, readFileOptions);
 
         var checkAssertions = function (result) {
             result.should.be.a('array');
@@ -99,7 +106,7 @@ describe('Sitemap generator', function () {
             should.exist(tagSitemap.data);
 
             //console.log(indexSitemap.data);
-            fs.writeFileAsync(expectedTagFilePath, tagSitemap.data);
+            //fs.writeFileAsync(expectedTagFilePath, tagSitemap.data);
             return Promise.all([
                 expectedIndexSitemap.then(function (buffer) {
                     indexSitemap.data.should.equal(buffer);
@@ -112,6 +119,9 @@ describe('Sitemap generator', function () {
                 }),
                 expectedCategorySitemap.then(function (buffer) {
                     categorySitemap.data.should.equal(buffer);
+                }),
+                expectedTagSitemap.then(function (buffer) {
+                    tagSitemap.data.should.equal(buffer);
                 })
             ]);
         };
