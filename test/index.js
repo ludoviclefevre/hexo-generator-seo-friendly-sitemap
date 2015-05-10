@@ -47,10 +47,11 @@ describe('Sitemap generator', function () {
     };
 
     before(function () {
-        return Promise.all([
-            insertPosts(),
-            Page.insert(pages)
-        ])
+        return Promise.all(
+            [
+                insertPosts(),
+                Page.insert(pages)
+            ])
             .then(function () {
                 locals = hexo.locals.toObject();
             });
@@ -64,9 +65,9 @@ describe('Sitemap generator', function () {
         var expectedDirectory = path.join(__dirname, 'expected');
 
         var expected = [{
-                'filename': 'index-sitemap.xml',
-                'testFilename': 'full-index-sitemap.xml'
-            }
+            'filename': 'index-sitemap.xml',
+            'testFilename': 'full-index-sitemap.xml'
+        }
         ];
 
 

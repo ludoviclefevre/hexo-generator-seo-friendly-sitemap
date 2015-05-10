@@ -8,7 +8,7 @@
     <% items.forEach(function(category){ %>
     <url>
         <loc><%- encodeURI(category.permalink) %></loc>
-        <lastmod><%= category.lastUpdated.toISOString() %></lastmod>
+        <lastmod><%= category.updated.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

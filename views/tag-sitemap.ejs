@@ -3,7 +3,7 @@
     <% items.forEach(function(tag){ %>
     <url>
         <loc><%- encodeURI(tag.permalink) %></loc>
-        <lastmod><%= tag.lastUpdated.toISOString() %></lastmod>
+        <lastmod><%= tag.updated.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
