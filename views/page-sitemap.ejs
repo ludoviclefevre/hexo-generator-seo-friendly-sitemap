@@ -5,7 +5,7 @@
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
-    <% pages.forEach(function(page){ %>
+    <% items.forEach(function(page){ %>
     <url>
         <loc><%- encodeURI(page.permalink) %></loc>
         <lastmod><%= page.updated.toISOString() || page.date.toISOString() %></lastmod>
