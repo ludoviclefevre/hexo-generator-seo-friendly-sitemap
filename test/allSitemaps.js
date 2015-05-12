@@ -1,19 +1,15 @@
-var chai = require("chai");
-var chaiAsPromised = require("chai-as-promised");
-var should = chai.should();
-var Hexo = require('hexo');
-var ejs = require('ejs');
-var path = require('path');
-var _ = require('lodash');
-var Promise = require('bluebird');
-var fs = Promise.promisifyAll(require('fs'));
-var moment = require('moment');
+var chai = require("chai"),
+    should = chai.should(),
+    Hexo = require('hexo'),
+    path = require('path'),
+    _ = require('lodash'),
+    moment = require('moment'),
+    Promise = require('bluebird'),
+    fs = Promise.promisifyAll(require('fs')),
 
-var readFileOptions = {
-    encoding: 'utf8'
-};
-
-//chai.use(chaiAsPromised);
+    readFileOptions = {
+        encoding: 'utf8'
+    };
 
 describe('Sitemap generator', function () {
     var hexo = new Hexo(__dirname, {silent: true});
