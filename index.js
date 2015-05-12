@@ -1,9 +1,9 @@
-var merge = require('utils-merge');
-var pathFn = require('path');
+var merge = require('utils-merge'),
+    pathFn = require('path'),
 
-var config = hexo.config.sitemap = merge({
-    path: 'sitemap.xml'
-}, hexo.config.sitemap);
+    config = hexo.config.sitemap = merge({
+        path: 'sitemap.xml'
+    }, hexo.config.sitemap);
 
 if (!pathFn.extname(config.path)) {
     config.path += '.xml';

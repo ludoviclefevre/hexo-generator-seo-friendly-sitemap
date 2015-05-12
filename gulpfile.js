@@ -1,8 +1,9 @@
-var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
-var rirmaf = require('rimraf');
+var gulp = require('gulp'),
+    $ = require('gulp-load-plugins')(),
+    rirmaf = require('rimraf'),
+    jscs = require('gulp-jscs'),
 
-var lib = 'lib/**/*.js';
+    lib = 'lib/**/*.js';
 
 gulp.task('coverage', function () {
     return gulp.src(lib)
@@ -15,7 +16,7 @@ gulp.task('coverage:clean', function (callback) {
 });
 
 gulp.task('mocha', ['coverage'], function () {
-    return gulp.src('test/index.js')
+    return gulp.src('test/*.js')
         .pipe($.mocha({
             reporter: 'spec'
         }))
@@ -27,6 +28,17 @@ gulp.task('jshint', function () {
         .pipe($.jshint())
         .pipe($.jshint.reporter('jshint-stylish'))
         .pipe($.jshint.reporter('fail'));
+});
+
+gulp.task('codeStyle', function () {
+    return gulp.src(
+        [
+            'lib/**/*.js',
+            'test/**/*.js',
+            'gulpfile.js',
+            'index.js'
+        ])
+        .pipe(jscs());
 });
 
 gulp.task('watch', function () {
