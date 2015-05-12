@@ -46,4 +46,4 @@ gulp.task('watch', function () {
     gulp.watch(['test/index.js'], ['mocha']);
 });
 
-gulp.task('test', ['mocha', 'jshint']);
+gulp.task('test', ['mocha', 'jshint', 'codeStyle']);
