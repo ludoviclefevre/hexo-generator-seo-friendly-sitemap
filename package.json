@@ -19,8 +19,9 @@
   "files": [
     "index.js",
     "lib",
-    "view",
-    "README.md"
+    "views",
+    "README.md",
+    "LICENSE"
   ],
   "keywords": [
     "hexo",
@@ -31,23 +32,23 @@
   ],
   "dependencies": {
     "ejs": "^2.3.1",
-    "lodash": "~3.8.0"
+    "lodash": "~3.8.0",
+    "bluebird": "2.9.25"
   },
   "devDependencies": {
-    "bluebird": "2.9.25",
     "chai": "^2.3.0",
     "chai-as-promised": "^5.0.0",
     "coveralls": "^2.11.2",
     "gulp": "^3.8.11",
-    "gulp-istanbul": "^0.8.1",
+    "gulp-istanbul": "^0.9.0",
     "gulp-jscs": "^1.6.0",
     "gulp-jshint": "^1.10.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-mocha": "^2.0.1",
     "hexo": "^3.0.1",
     "jshint-stylish": "^1.0.2",
-    "mocha": "^2.2.4",
-    "moment": "^2.10.2",
+    "mocha": "^2.2.5",
+    "moment": "^2.10.3",
     "rimraf": "^2.3.3"
   },
   "scripts": {
