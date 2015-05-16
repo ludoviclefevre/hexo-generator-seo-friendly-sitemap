@@ -59,6 +59,6 @@
   },
   "scripts": {
     "test": "grunt test",
-    "travis-ci": "grunt travis"
+    "travis": "grunt travis"
   }
 }
