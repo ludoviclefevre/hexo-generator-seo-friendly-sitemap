@@ -1,11 +1,12 @@
-#
+# hexo-generator-seo-friendly-sitemap
+
 [![Build Status][travis-image]][travis-url]
 [![Coverage Status][coveralls-image]][coveralls-url]
 [![Dependency Status][daviddm-url]][daviddm-image]
 
-> hexo-generator-seo-friendly-sitemap
+Generate SEO-friendly sitemap.
 
-Not working yet...
+Inspired by XML Sitemap in Yoast Wordpress SEO Plugin (https://yoast.com).
 
 ## License
 

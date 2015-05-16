@@ -45,31 +45,6 @@ module.exports = function (grunt) {
                 'lib/**/*.js'
             ]
         },
-        mochacov: {
-            unit: {
-                options: {
-                    reporter: 'spec'
-                }
-            },
-            coverage: {
-                options: {
-                    reporter: 'mocha-lcov-reporter',
-                    coverage: true
-                }
-            },
-            coveralls: {
-                options: {
-                    coveralls: {
-                        serviceName: 'travis-ci'
-                    }
-                }
-            },
-            options: {
-                files: 'test/*.js',
-                ui: 'bdd',
-                colors: true
-            }
-        },
         mocha_istanbul: {
             coverage: {
                 src: 'test'

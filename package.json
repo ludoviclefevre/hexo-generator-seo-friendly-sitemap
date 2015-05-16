@@ -51,7 +51,6 @@
     "grunt-contrib-watch": "~0.6.1",
     "grunt-jscs": "~1.8.0",
     "grunt-mocha-cli": "~1.13.0",
-    "grunt-mocha-cov": "~0.4.0",
     "grunt-escomplex": "~0.0.3",
     "load-grunt-tasks": "~3.1.0",
     "time-grunt": "~1.2.0",
