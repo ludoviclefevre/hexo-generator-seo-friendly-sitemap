@@ -6,6 +6,6 @@ coverage/
 .jscsrc
 .jshintrc
 .travis.yml
-gulpfile.js
+Gruntfile.js
 .idea/
 appveyor.yml

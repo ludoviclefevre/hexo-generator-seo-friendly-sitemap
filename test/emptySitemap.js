@@ -2,25 +2,35 @@ var chai = require("chai"),
     should = chai.should(),
     Hexo = require('hexo'),
     path = require('path'),
-    _ = require('lodash'),
+    _ = require('lodash');
 
-    hexo = new Hexo(__dirname, {silent: true}),
-    generator = require(path.join(__dirname, '../lib/generator')).bind(hexo),
-    locals;
+describe('Hexo', function () {
+    it('should not generate sitemap files if posts, pages, categories and tags are not defined', function () {
+        var hexo = new Hexo(__dirname, {silent: true}),
+            generator = require(path.join(__dirname, '../lib/generator')).bind(hexo),
+            locals,
+            checkAssertions = function (result) {
+                return result.should.be.empty;
+            },
+            result = [];
 
-before(function () {
-    locals = hexo.locals.toObject();
-});
+        locals = hexo.locals.toObject();
 
-it('should not generate sitemap files if posts, pages, categories and tags are not defined', function () {
-    hexo.config.sitemap = {
-        path: 'sitemap.xml'
-    };
 
-    var checkAssertions = function (result) {
-        result.should.be.empty;
-    };
+        hexo.config.sitemap = {
+            path: 'sitemap.xml'
+        };
 
-    return generator(locals)
-        .then(checkAssertions);
+        //result.should.be.empty;
+
+        /*
+         generator(locals)
+         .then(checkAssertions)
+         .finally(done);
+         */
+
+        return generator(locals)
+            .then(checkAssertions);
+
+    });
 });

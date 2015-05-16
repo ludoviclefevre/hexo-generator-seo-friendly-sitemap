@@ -52,7 +52,7 @@ before(function () {
         });
 });
 
-it('should generate all sitemap files if posts, pages, categories and tags are defined', function () {
+it('should generate all sitemap files if posts, pages, categories and tags are defined', function (done) {
     hexo.config.sitemap = {
         path: 'sitemap.xml'
     };
@@ -124,5 +124,9 @@ it('should generate all sitemap files if posts, pages, categories and tags are d
         };
 
     return generator(locals)
-        .then(checkAssertions);
+        .then(checkAssertions)
+        .then(function () {
+            hexo = null;
+            done();
+        });
 });
