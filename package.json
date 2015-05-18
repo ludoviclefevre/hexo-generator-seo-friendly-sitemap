@@ -1,6 +1,6 @@
 {
     "name": "hexo-generator-seo-friendly-sitemap",
-    "version": "0.0.2-pre",
+    "version": "0.0.2",
     "description": "SEO-friendly sitemap generator plugin for Hexo",
     "main": "index",
     "homepage": "https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap",
@@ -34,7 +34,8 @@
     "dependencies": {
         "bluebird": " ~2.9.25",
         "ejs": "~2.3.1",
-        "lodash": "~3.8.0"
+        "lodash": "~3.8.0",
+        "utils-merge": "~1.0.0"
     },
     "devDependencies": {
         "chai": "~2.3.0",
