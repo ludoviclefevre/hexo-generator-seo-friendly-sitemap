@@ -19,7 +19,11 @@ module.exports = function (grunt) {
             js: {
                 src: [
                     'index.js',
-                    'lib/*.js',
+                    'lib/*.js'
+                ]
+            },
+            test: {
+                src: [
                     'test/*.js'
                 ]
             }
@@ -28,7 +32,7 @@ module.exports = function (grunt) {
             src: [
                 '<%= jshint.js.src %>',
                 '<%= jshint.gruntfile.src %>',
-                'test/*.js'
+                '<%= jshint.test.src %>'
             ]
         },
         escomplex: {
