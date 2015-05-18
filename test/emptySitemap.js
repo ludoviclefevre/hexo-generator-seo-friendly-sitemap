@@ -1,3 +1,5 @@
+'use strict';
+
 var Hexo = require('hexo'),
     path = require('path');
 

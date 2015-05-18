@@ -1,63 +1,63 @@
 {
-  "name": "hexo-generator-seo-friendly-sitemap",
-  "version": "0.0.1-pre",
-  "description": "SEO friendly sitemap generator plugin for Hexo",
-  "main": "index",
-  "homepage": "https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap",
-  "author": {
-    "name": "Ludovic LEFEVRE",
-    "email": "contact@ludoviclefevre.fr",
-    "url": "http://www.ludoviclefevre.fr"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap.git"
-  },
-  "bugs": {
-    "url": "http://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap/issues"
-  },
-  "license": "MIT",
-  "files": [
-    "index.js",
-    "lib",
-    "views",
-    "README.md",
-    "LICENSE"
-  ],
-  "keywords": [
-    "hexo",
-    "sitemap",
-    "seo",
-    "google",
-    "generator"
-  ],
-  "dependencies": {
-    "bluebird": " ~2.9.25",
-    "ejs": "~2.3.1",
-    "lodash": "~3.8.0"
-  },
-  "devDependencies": {
-    "chai": "~2.3.0",
-    "coveralls": "~2.11.2",
-    "hexo": "~3.0.1",
-    "jshint-stylish": "~1.0.2",
-    "mocha": "~2.2.5",
-    "moment": "~2.10.3",
-    "rimraf": "~2.3.3",
-    "grunt": "~0.4.5",
-    "grunt-cli": "~0.1.13",
-    "grunt-contrib-jshint": "~0.11.2",
-    "grunt-contrib-nodeunit": "~0.4.1",
-    "grunt-contrib-watch": "~0.6.1",
-    "grunt-jscs": "~1.8.0",
-    "grunt-mocha-cli": "~1.13.0",
-    "grunt-escomplex": "~0.0.3",
-    "load-grunt-tasks": "~3.1.0",
-    "time-grunt": "~1.2.0",
-    "grunt-mocha-istanbul": "~2.4.0"
-  },
-  "scripts": {
-    "test": "grunt test",
-    "travis": "grunt travis"
-  }
+    "name": "hexo-generator-seo-friendly-sitemap",
+    "version": "0.0.1-pre",
+    "description": "SEO friendly sitemap generator plugin for Hexo",
+    "main": "index",
+    "homepage": "https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap",
+    "author": {
+        "name": "Ludovic LEFEVRE",
+        "email": "contact@ludoviclefevre.fr",
+        "url": "http://www.ludoviclefevre.fr"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap.git"
+    },
+    "bugs": {
+        "url": "http://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap/issues"
+    },
+    "license": "MIT",
+    "files": [
+        "index.js",
+        "lib",
+        "views",
+        "README.md",
+        "LICENSE"
+    ],
+    "keywords": [
+        "hexo",
+        "sitemap",
+        "seo",
+        "google",
+        "generator"
+    ],
+    "dependencies": {
+        "bluebird": " ~2.9.25",
+        "ejs": "~2.3.1",
+        "lodash": "~3.8.0"
+    },
+    "devDependencies": {
+        "chai": "~2.3.0",
+        "coveralls": "~2.11.2",
+        "hexo": "~3.0.1",
+        "jshint-stylish": "~1.0.2",
+        "mocha": "~2.2.5",
+        "moment": "~2.10.3",
+        "rimraf": "~2.3.3",
+        "grunt": "~0.4.5",
+        "grunt-cli": "~0.1.13",
+        "grunt-contrib-jshint": "~0.11.2",
+        "grunt-contrib-nodeunit": "~0.4.1",
+        "grunt-contrib-watch": "~0.6.1",
+        "grunt-jscs": "~1.8.0",
+        "grunt-mocha-cli": "~1.13.0",
+        "grunt-escomplex": "~0.0.3",
+        "load-grunt-tasks": "~3.1.0",
+        "time-grunt": "~1.2.0",
+        "grunt-mocha-istanbul": "~2.4.0"
+    },
+    "scripts": {
+        "test": "grunt test",
+        "travis": "grunt travis"
+    }
 }

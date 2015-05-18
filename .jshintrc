@@ -1,9 +1,9 @@
 {
+    "strict": true,
     "eqnull": true,
     "expr": true,
-    "indent": 2,
+    "indent": 4,
     "node": true,
-    "trailing": true,
     "quotmark": "single",
     "undef": true,
     "unused": "vars",
