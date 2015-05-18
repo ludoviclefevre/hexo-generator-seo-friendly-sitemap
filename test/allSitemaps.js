@@ -1,4 +1,4 @@
-var chai = require("chai"),
+var chai = require('chai'),
     should = chai.should(),
     Hexo = require('hexo'),
     path = require('path'),
@@ -58,13 +58,6 @@ it('should generate all sitemap files if posts, pages, categories and tags are d
     };
 
     var expectedDirectory = path.join(__dirname, 'expected'),
-
-        expected = [{
-            'filename': 'index-sitemap.xml',
-            'testFilename': 'full-index-sitemap.xml'
-        }
-        ],
-
 
         expectedIndexFilePath = path.join(expectedDirectory, 'full-index-sitemap.xml'),
         expectedPostFilePath = path.join(expectedDirectory, 'full-post-sitemap.xml'),

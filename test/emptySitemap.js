@@ -1,8 +1,5 @@
-var chai = require("chai"),
-    should = chai.should(),
-    Hexo = require('hexo'),
-    path = require('path'),
-    _ = require('lodash');
+var Hexo = require('hexo'),
+    path = require('path');
 
 describe('Hexo', function () {
     it('should not generate sitemap files if posts, pages, categories and tags are not defined', function () {
@@ -11,8 +8,7 @@ describe('Hexo', function () {
             locals,
             checkAssertions = function (result) {
                 return result.should.be.empty;
-            },
-            result = [];
+            };
 
         locals = hexo.locals.toObject();
 
@@ -21,16 +17,7 @@ describe('Hexo', function () {
             path: 'sitemap.xml'
         };
 
-        //result.should.be.empty;
-
-        /*
-         generator(locals)
-         .then(checkAssertions)
-         .finally(done);
-         */
-
         return generator(locals)
             .then(checkAssertions);
-
     });
 });

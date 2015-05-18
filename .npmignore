@@ -1,11 +1,11 @@
+.idea/
+coverage/
 test/
 tmp/
-coverage/
 *.log
 .editorconfig
 .jscsrc
 .jshintrc
 .travis.yml
 Gruntfile.js
-.idea/
 appveyor.yml

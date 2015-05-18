@@ -16,16 +16,17 @@ module.exports = function (grunt) {
             },
             js: {
                 src: [
-                    //'index.js',
-                    'lib/*.js'
+                    'index.js',
+                    'lib/*.js',
+                    'test/*.js'
                 ]
             }
         },
         jscs: {
             src: [
                 '<%= jshint.js.src %>',
-                'test/*.js',
-                '<%= jshint.gruntfile.src %>'
+                '<%= jshint.gruntfile.src %>',
+                'test/*.js'
             ]
         },
         escomplex: {
