@@ -23,7 +23,7 @@ sitemap:
     path: sitemap.xml
 ```
 
-- **path** - Sitemap path. (Default: sitemap.xml)
+- **path** - Sitemap path.
 
 ## License
 
