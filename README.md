@@ -8,6 +8,21 @@ Generate SEO-friendly sitemap.
 
 Inspired by XML Sitemap in Yoast Wordpress SEO Plugin (https://yoast.com).
 
+## Install
+
+``` bash
+$ npm install hexo-generator-seo-friendly-sitemap --save
+```
+
+## Options
+
+You can configure this plugin in `_config.yml`.
+
+``` yaml
+sitemap:
+    path: sitemap.xml
+```
+
 ## License
 
 MIT © [Ludovic LEFEVRE](http://www.ludoviclefevre.fr)

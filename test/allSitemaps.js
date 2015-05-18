@@ -76,7 +76,7 @@ it('should generate all sitemap files if posts, pages, categories and tags are d
         checkAssertions = function (result) {
             result.should.be.a('array');
 
-            var indexSitemap = _.find(result, {path: 'index-sitemap.xml'}),
+            var indexSitemap = _.find(result, {path: 'sitemap.xml'}),
                 postSitemap = _.find(result, {path: 'post-sitemap.xml'}),
                 pageSitemap = _.find(result, {path: 'page-sitemap.xml'}),
                 categorySitemap = _.find(result, {path: 'category-sitemap.xml'}),
