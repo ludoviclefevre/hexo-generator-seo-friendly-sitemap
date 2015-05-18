@@ -1,12 +1,7 @@
 {
     "strict": true,
-    "eqnull": true,
-    "expr": true,
-    "indent": 4,
     "node": true,
     "quotmark": "single",
-    "undef": true,
-    "unused": "vars",
     "globals": {
         "Promise": true,
         "hexo": true,
