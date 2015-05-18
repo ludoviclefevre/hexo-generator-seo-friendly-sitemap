@@ -60,7 +60,10 @@ module.exports = function (grunt) {
                         lines: 75,
                         statements: 75
                     },
-                    root: './lib', // define where the cover task should consider the root of libraries that are covered by tests
+                    root: [
+                        './lib',
+                        'index.js'
+                    ], // define where the cover task should consider the root of libraries that are covered by tests
                     reportFormats: ['cobertura', 'lcovonly']
                 }
             }
