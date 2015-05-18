@@ -13,7 +13,6 @@
         "it": true,
         "before": true,
         "expected": true,
-        "describe": true,
-        "should": true
+        "describe": true
     }
 }
