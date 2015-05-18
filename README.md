@@ -23,6 +23,8 @@ sitemap:
     path: sitemap.xml
 ```
 
+- **path** - Sitemap path. (Default: sitemap.xml)
+
 ## License
 
 MIT © [Ludovic LEFEVRE](http://www.ludoviclefevre.fr)
