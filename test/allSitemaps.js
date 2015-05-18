@@ -138,4 +138,16 @@ describe('SEO-friendly sitemap generator', function () {
         return generator(locals)
             .then(checkAssertions);
     });
+
+    it('should generate index sitemap with default filename if not configured in _config.yml.', function () {
+        var checkAssertions = function (result) {
+                var indexSitemap = _.find(result, {path: 'sitemap.xml'});
+                assert.isDefined(indexSitemap);
+            };
+
+        hexo.config.sitemap = null;
+
+        return generator(locals)
+            .then(checkAssertions);
+    });
 });
