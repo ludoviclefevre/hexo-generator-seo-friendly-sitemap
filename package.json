@@ -1,7 +1,7 @@
 {
     "name": "hexo-generator-seo-friendly-sitemap",
-    "version": "0.0.1",
-    "description": "SEO friendly sitemap generator plugin for Hexo",
+    "version": "0.0.2-pre",
+    "description": "SEO-friendly sitemap generator plugin for Hexo",
     "main": "index",
     "homepage": "https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap",
     "author": {
