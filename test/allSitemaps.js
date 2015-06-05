@@ -106,6 +106,8 @@ describe('SEO-friendly sitemap generator', function () {
                         indexSitemap.data.should.equal(buffer);
                     }),
                     expectedPostSitemap.then(function (buffer) {
+                        //fs.writeFileSync(expectedPostFilePath, buffer);
+
                         postSitemap.data.should.equal(buffer);
                     }),
                     expectedPageSitemap.then(function (buffer) {

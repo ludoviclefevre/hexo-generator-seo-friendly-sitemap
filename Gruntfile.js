@@ -76,11 +76,11 @@ module.exports = function (grunt) {
             },
             js: {
                 files: '<%= jshint.js.src %>',
-                tasks: ['jshint:js', 'mochacli']
+                tasks: ['jshint:js', 'test']
             },
             test: {
                 files: '<%= jshint.test.src %>',
-                tasks: ['jshint:test', 'mochacli']
+                tasks: ['jshint:test', 'test']
             }
         }
     });

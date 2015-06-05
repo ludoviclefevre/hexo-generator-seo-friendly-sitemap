@@ -2,12 +2,9 @@
     "strict": true,
     "node": true,
     "quotmark": "single",
+    "mocha": true,
     "globals": {
         "Promise": true,
-        "hexo": true,
-        "it": true,
-        "before": true,
-        "expected": true,
-        "describe": true
+        "hexo": true
     }
 }
