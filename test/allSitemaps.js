@@ -30,32 +30,53 @@ var chai = require('chai'),
     ],
     locals,
 
+    setPostCategories = function (post) {
+        console.log('setPostCategories');
+
+        return Promise.each(['Cat1', 'Cat2', 'Cat1'], function (category) {
+            post.setCategories(category);
+        });
+    },
+
+    setPostTags = function (post) {
+        console.log('setPostTags');
+
+        return Promise.each(['Tag1', 'Tag2', 'Tag3'], function (tag) {
+            post.setTags(tag);
+        });
+    },
+
+    setPostCategoriesAndTags = function (posts) {
+        console.log('setPostCategoriesAndTags');
+        var post = posts[0];
+        return setPostCategories(post)
+            .return(post)
+            .then(setPostTags);
+    },
+
     insertPosts = function () {
+        console.log('insertPosts');
         return Post.insert(posts)
-            .then(function (insertedPosts) {
-                return Promise.all([
-                    insertedPosts[0].setCategories(['Cat1']),
-                    insertedPosts[0].setCategories(['Cat2']),
-                    insertedPosts[1].setCategories(['Cat1']),
-                    insertedPosts[0].setTags(['Tag1']),
-                    insertedPosts[0].setTags(['Tag2']),
-                    insertedPosts[1].setTags(['Tag'])
-                ]);
-            });
+            .then(setPostCategoriesAndTags);
+    },
+
+    insertPages = function () {
+        console.log('insertPages');
+        return Page.insert(pages);
+    },
+
+    setHexoLocals = function () {
+        console.log('setHexoLocals');
+        locals = hexo.locals.toObject();
+        return Promise.resolve(locals);
     };
 
-describe('SEO-friendly sitemap generator', function () {
-
+describe('SEO-friendly sitemap generator: All Sitemaps', function () {
 
     before(function () {
-        return Promise.all(
-            [
-                insertPosts(),
-                Page.insert(pages)
-            ])
-            .then(function () {
-                locals = hexo.locals.toObject();
-            });
+        return insertPosts()
+            .then(insertPages)
+            .then(setHexoLocals);
     });
 
     it('should generate all sitemap files if posts, pages, categories and tags are defined', function () {
@@ -126,30 +147,32 @@ describe('SEO-friendly sitemap generator', function () {
             .then(checkAssertions);
     });
 
-    it('should generate index sitemap with filename configured in _config.yml.', function () {
-        var expectedFilename = 'test.xml',
-            checkAssertions = function (result) {
-            var indexSitemap = _.find(result, {path: expectedFilename});
-            assert.isDefined(indexSitemap);
-        };
+    /*
+     it('should generate index sitemap with filename configured in _config.yml.', function () {
+     var expectedFilename = 'test.xml',
+     checkAssertions = function (result) {
+     var indexSitemap = _.find(result, {path: expectedFilename});
+     assert.isDefined(indexSitemap);
+     };
 
-        hexo.config.sitemap = {
-            path: expectedFilename
-        };
+     hexo.config.sitemap = {
+     path: expectedFilename
+     };
 
-        return generator(locals)
-            .then(checkAssertions);
-    });
+     return generator(locals)
+     .then(checkAssertions);
+     });
 
-    it('should generate index sitemap with default filename if not configured in _config.yml.', function () {
-        var checkAssertions = function (result) {
-                var indexSitemap = _.find(result, {path: 'sitemap.xml'});
-                assert.isDefined(indexSitemap);
-            };
+     it('should generate index sitemap with default filename if not configured in _config.yml.', function () {
+     var checkAssertions = function (result) {
+     var indexSitemap = _.find(result, {path: 'sitemap.xml'});
+     assert.isDefined(indexSitemap);
+     };
 
-        hexo.config.sitemap = null;
+     hexo.config.sitemap = null;
 
-        return generator(locals)
-            .then(checkAssertions);
-    });
+     return generator(locals)
+     .then(checkAssertions);
+     });
+     */
 });

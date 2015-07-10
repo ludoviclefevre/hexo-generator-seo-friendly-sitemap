@@ -85,6 +85,9 @@ module.exports = function (grunt) {
         }
     });
 
+    grunt.option('debug', true);
+    grunt.option('stack', true);
+
     grunt.event.on('coverage', function (lcov, done) {
         require('coveralls').handleInput(lcov, function (err) {
             if (err) {
