@@ -32,18 +32,12 @@ var chai = require('chai'),
 
     setPostCategories = function (post) {
         console.log('setPostCategories');
-
-        return Promise.each(['Cat1', 'Cat2', 'Cat1'], function (category) {
-            post.setCategories(category);
-        });
+        return post.setCategories(['Cat1', 'Cat2', 'Cat1']);
     },
 
     setPostTags = function (post) {
         console.log('setPostTags');
-
-        return Promise.each(['Tag1', 'Tag2', 'Tag3'], function (tag) {
-            post.setTags(tag);
-        });
+        return post.setTags(['Tag1', 'Tag2', 'Tag3']);
     },
 
     setPostCategoriesAndTags = function (posts) {
@@ -134,6 +128,7 @@ describe('SEO-friendly sitemap generator: All Sitemaps', function () {
                     expectedPageSitemap.then(function (buffer) {
                         pageSitemap.data.should.equal(buffer);
                     }),
+
                     expectedCategorySitemap.then(function (buffer) {
                         categorySitemap.data.should.equal(buffer);
                     }),
