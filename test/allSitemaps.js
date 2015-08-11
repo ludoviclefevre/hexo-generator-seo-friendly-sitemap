@@ -32,12 +32,16 @@ var chai = require('chai'),
 
     setPostCategories = function (post) {
         console.log('setPostCategories');
-        return post.setCategories(['Cat1', 'Cat2', 'Cat1']);
+        return Promise.each(['Cat1', 'Cat2', 'Cat3'], function (category) {
+            return post.setCategories([category]);
+        });
     },
 
     setPostTags = function (post) {
         console.log('setPostTags');
-        return post.setTags(['Tag1', 'Tag2', 'Tag3']);
+        return Promise.each(['Tag1', 'Tag2', 'Tag3'], function (tag) {
+            return post.setTags([tag]);
+        });
     },
 
     setPostCategoriesAndTags = function (posts) {

@@ -5,19 +5,13 @@
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
-    <% items.forEach(function(item){ %>
+<% items.forEach(function(item){ %>
     <url>
         <loc><%- encodeURI(item.permalink) %></loc>
         <lastmod><%= item.updated.toISOString() || item.date.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
-        <% item.photos.forEach(function(photo){ %>
-        <image:image>
-            <image:loc><%- encodeURI(photo.url) %></image:loc>
-            <image:caption><![CDATA[<%- photo.caption %>]]</image:caption>
-        </image:image>
-        <% }) %>
     </url>
-    <% }) %>
+<% }) %>
 </urlset>
 <% include meta %>
