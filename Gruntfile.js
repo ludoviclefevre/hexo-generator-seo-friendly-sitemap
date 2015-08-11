@@ -82,6 +82,14 @@ module.exports = function (grunt) {
                 files: '<%= jshint.test.src %>',
                 tasks: ['jshint:test', 'test']
             }
+        },
+        'nice-package': {
+            all: {
+                options: {
+                    // make sure package.json ends with \n\n, default false
+                    blankLine: true
+                }
+            }
         }
     });
 
@@ -97,7 +105,7 @@ module.exports = function (grunt) {
         });
     });
 
-    grunt.registerTask('test', ['jshint', 'jscs', 'mocha_istanbul:coverage', 'escomplex']);
-    grunt.registerTask('travis', ['jshint', 'jscs', 'mocha_istanbul:coveralls']);
+    grunt.registerTask('test', ['jshint', 'jscs', 'nice-package', 'mocha_istanbul:coverage', 'escomplex']);
+    grunt.registerTask('travis', ['jshint', 'jscs', 'nice-package', 'mocha_istanbul:coveralls']);
     grunt.registerTask('default', 'test');
 };
