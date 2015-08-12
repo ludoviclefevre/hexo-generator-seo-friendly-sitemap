@@ -5,13 +5,13 @@
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
-    <% items.forEach(function(category){ %>
+<% items.forEach(function(category){ %>
     <url>
         <loc><%- encodeURI(category.permalink) %></loc>
         <lastmod><%= category.updated.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
-    <% }) %>
+<% }) %>
 </urlset>
 <% include meta %>
