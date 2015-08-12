@@ -3,18 +3,21 @@ root = true
 
 [*]
 charset = utf-8
+indent_style = space
+end_of_line = lf
 
 [*.js]
-indent_style = space
 indent_size = 4
-end_of_line = lf
 trim_trailing_whitespace = true
 insert_final_newline = true
 
 [*.md]
 trim_trailing_whitespace = false
 
-[{.jscsrc,.jshintrc,package.json}]
+[package.json]
 trim_trailing_whitespace = true
-indent_style = space
+indent_size = 2
+
+[{.jscsrc,.jshintrc}]
+trim_trailing_whitespace = true
 indent_size = 4
