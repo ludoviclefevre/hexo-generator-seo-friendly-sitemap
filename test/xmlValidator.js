@@ -13,7 +13,7 @@
         viewsDirPath = 'views',
         views = [{
             'type': 'categories',
-            'path': path.join(viewsDirPath, 'category-sitemap.xml')
+            'path': path.join(viewsDirPath, 'category-sitemap.ejs')
         }];
 
     describe('SEO-friendly sitemap generator: ', function () {
@@ -24,8 +24,7 @@
     });
 
     var getCompiledContent = function (type) {
-        var filePath = _(views).find('type', type);
-        assert.isNotNull(path, 'We must have a path for view ' + type);
+        var filePath = _(views).find('type', type).path;
 
         var boundData = {
             config: {
@@ -41,7 +40,9 @@
 
         return fs.readFileAsync(filePath)
             .then(function (content) {
-                var compiledTemplate = ejs.compile(content),
+                var compiledTemplate = ejs.compile(content, {
+                        filename: filePath
+                    }),
                     xml = compiledTemplate(boundData);
                 return xml;
             });
