@@ -38,7 +38,10 @@
             ]
         };
 
-        return fs.readFileAsync(filePath)
+        var readFileOptions = {
+            encoding: 'utf8'
+        };
+        return fs.readFileAsync(filePath, readFileOptions)
             .then(function (content) {
                 var compiledTemplate = ejs.compile(content, {
                         filename: filePath
