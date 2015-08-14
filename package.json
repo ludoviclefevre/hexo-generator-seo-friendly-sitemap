@@ -30,6 +30,7 @@
     "grunt-mocha-cli": "1.14.0",
     "grunt-mocha-istanbul": "3.0.1",
     "grunt-nice-package": "0.9.3",
+    "grunt-nsp-package": "0.0.5",
     "istanbul": "0.3.17",
     "jshint-stylish": "2.0.1",
     "load-grunt-tasks": "3.2.0",
