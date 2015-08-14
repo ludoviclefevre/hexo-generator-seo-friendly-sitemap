@@ -6,7 +6,6 @@
         _ = require('lodash'),
         ejs = require('ejs'),
         chai = require('chai'),
-        assert = chai.assert,
         DOMParser = require('xmldom').DOMParser,
         Promise = require('bluebird'),
         fs = Promise.promisifyAll(require('fs')),
@@ -46,8 +45,7 @@
                 var compiledTemplate = ejs.compile(content, {
                         filename: filePath
                     }),
-                    xml = compiledTemplate(boundData);
-                return xml;
+                return compiledTemplate(boundData);
             });
     };
 
