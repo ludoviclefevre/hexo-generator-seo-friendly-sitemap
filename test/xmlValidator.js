@@ -5,7 +5,6 @@
         path = require('path'),
         _ = require('lodash'),
         ejs = require('ejs'),
-        chai = require('chai'),
         DOMParser = require('xmldom').DOMParser,
         Promise = require('bluebird'),
         fs = Promise.promisifyAll(require('fs')),

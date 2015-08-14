@@ -3,7 +3,6 @@
 
     var chai = require('chai'),
         should = chai.should(),
-        assert = chai.assert,
         Hexo = require('hexo'),
         path = require('path'),
         _ = require('lodash'),
