@@ -7,10 +7,3 @@ node_js:
 
 script:
   - grunt travis
-
-addons:
-  code_climate:
-    repo_token: 23ca7da387a327c3c5cb76e79ba1fe556629afe14b8ffa3a5a64bd3f0e6b3873
-
-after_script:
-  - codeclimate-test-reporter < coverage/lcov.info
