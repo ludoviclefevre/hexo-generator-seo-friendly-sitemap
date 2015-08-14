@@ -44,11 +44,10 @@
             .then(function (content) {
                 var compiledTemplate = ejs.compile(content, {
                         filename: filePath
-                    }),
+                    });
                 return compiledTemplate(boundData);
             });
     };
-
 
     var xmlValidator = function (xml) {
         return new Promise(function (resolve, reject) {
