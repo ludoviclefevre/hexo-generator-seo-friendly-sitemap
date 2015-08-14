@@ -53,12 +53,14 @@
 
 
     var xmlValidator = function (xml) {
-        new DOMParser({
-            locator: {},
-            errorHandler: function (level, msg) {
-                Promise.reject(msg);
-            }
-        }).parseFromString(xml, 'text/xml');
-        Promise.resolve();
+        return new Promise(function (resolve, reject) {
+            new DOMParser({
+                locator: {},
+                errorHandler: function (level, msg) {
+                    reject(msg);
+                }
+            }).parseFromString(xml, 'text/xml');
+            resolve();
+        });
     };
 })();
