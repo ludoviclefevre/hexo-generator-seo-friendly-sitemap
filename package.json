@@ -15,7 +15,8 @@
     "ejs": "2.3.3",
     "hexo": "3.1.1",
     "lodash": "3.10.1",
-    "moment": "2.10.6"
+    "moment": "2.10.6",
+    "utils-merge": "1.0.0"
   },
   "devDependencies": {
     "chai": "3.2.0",
