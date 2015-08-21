@@ -17,6 +17,7 @@
         hexo = new Hexo(__dirname, {silent: true}),
         Post = hexo.model('Post'),
         Page = hexo.model('Page'),
+        Tag  = hexo.model('Tag'),
         generator = require(path.join(__dirname, '../lib/generator')).bind(hexo),
         posts = [
             {source: 'foo', slug: 'foo', path: 'foo', updated: moment.utc([2015, 0, 1, 8]).toDate()},
@@ -27,6 +28,9 @@
             {source: 'Page 1', slug: 'Page 1', updated: moment.utc([2014, 11, 10, 9]).toDate(), path: 'page1'},
             {source: 'Page 2', slug: 'Page 2', updated: moment.utc([2014, 11, 15, 10]).toDate(), path: 'page2'},
             {source: 'Page 3', slug: 'Page 3', updated: moment.utc([2014, 11, 20, 11]).toDate(), path: 'page3'}
+        ],
+        tags = [
+            {name: 'footag', path: 'footag'}
         ],
         locals,
 
@@ -63,6 +67,10 @@
             return Page.insert(pages);
         },
 
+        insertTags = function () {
+            console.log('insertTags');
+            return Tag.insert(tags);
+        },
         setHexoLocals = function () {
             console.log('setHexoLocals');
             locals = hexo.locals.toObject();
@@ -74,6 +82,7 @@
         before(function () {
             return insertPosts()
                 .then(insertPages)
+                .then(insertTags)
                 .then(setHexoLocals);
         });
 
