@@ -8,6 +8,8 @@ Generate SEO-friendly sitemap.
 
 Inspired by XML Sitemap in Yoast Wordpress SEO Plugin (https://yoast.com).
 
+It will generate separated sitemap files for pages, posts, categories, tags and a XSL stylesheet.
+
 ## Install
 
 ``` bash
@@ -23,7 +25,7 @@ sitemap:
     path: sitemap.xml
 ```
 
-- **path** - Sitemap path.
+- **path** - Index sitemap path.
 
 ## License
 
