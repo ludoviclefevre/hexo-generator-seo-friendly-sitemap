@@ -17,7 +17,7 @@
         hexo = new Hexo(__dirname, {silent: true}),
         Post = hexo.model('Post'),
         Page = hexo.model('Page'),
-        Tag  = hexo.model('Tag'),
+        Tag = hexo.model('Tag'),
         generator = require(path.join(__dirname, '../lib/generator')).bind(hexo),
         posts = [
             {source: 'foo', slug: 'foo', path: 'foo', updated: moment.utc([2015, 0, 1, 8]).toDate()},
@@ -36,16 +36,12 @@
 
         setPostCategories = function (post) {
             console.log('setPostCategories');
-            return Promise.each(['Cat1', 'Cat2', 'Cat3'], function (category) {
-                return post.setCategories([category]);
-            });
+            return post.setCategories(['Cat1', 'Cat2', 'Cat3']);
         },
 
         setPostTags = function (post) {
             console.log('setPostTags');
-            return Promise.each(['Tag1', 'Tag2', 'Tag3'], function (tag) {
-                return post.setTags([tag]);
-            });
+            return post.setTags(['Tag1', 'Tag2', 'Tag3']);
         },
 
         setPostCategoriesAndTags = function (posts) {
