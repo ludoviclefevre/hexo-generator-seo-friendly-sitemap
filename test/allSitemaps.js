@@ -7,7 +7,6 @@
         path = require('path'),
         _ = require('lodash'),
         moment = require('moment'),
-        beautify = require('pretty-data').pd,
         Promise = require('bluebird'),
         fs = Promise.promisifyAll(require('fs')),
 
