@@ -7,5 +7,6 @@ tmp/
 .jscsrc
 .jshintrc
 .travis.yml
+.codeclimate.yml
 Gruntfile.js
 appveyor.yml

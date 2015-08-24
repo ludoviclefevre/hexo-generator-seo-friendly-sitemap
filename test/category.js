@@ -14,7 +14,7 @@
     };
 
     describe('SEO-friendly sitemap generator', function () {
-        it('should not generate sitemap category file no categories are mentioned in posts', function () {
+        it('should not generate sitemap category file if no categories are mentioned in posts', function () {
             var hexo = new Hexo(__dirname, {silent: true}),
                 generator = require(path.join(__dirname, '..', 'lib', 'generator')).bind(hexo),
                 locals,
@@ -33,7 +33,7 @@
                 .then(checkAssertions);
         });
 
-        it('should not generate sitemap category file no categories are mentioned in posts', function () {
+        it('should generate sitemap category file', function () {
             var hexo = new Hexo(__dirname, {silent: true}),
                 Post = hexo.model('Post'),
                 generator = require(path.join(__dirname, '..', 'lib', 'generator')).bind(hexo),
