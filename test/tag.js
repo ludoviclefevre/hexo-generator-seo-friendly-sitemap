@@ -8,7 +8,7 @@
         Promise = require('bluebird'),
         chai = require('chai'),
         assert = chai.assert,
-        category = require('../lib/category');
+        tag = require('../lib/tag');
 
     var instanciateHexo = function () {
         var hexo = new Hexo(__dirname, {silent: true});
@@ -28,9 +28,9 @@
         return [hexo, Post.insert(mockedPosts)];
     };
 
-    var setPostCategory = function (hexo, posts) {
+    var setPostTag = function (hexo, posts) {
         var post = posts[1];
-        return [hexo, post.setCategories(['Category1'])];
+        return [hexo, post.setTags(['Tag1'])];
     };
 
     var getHexoLocals = function (hexo) {
@@ -38,32 +38,32 @@
     };
 
     describe('SEO-friendly sitemap generator', function () {
-        it('should not generate sitemap category file if no categories are mentioned in posts', function () {
+        it('should not generate sitemap tag file if no tags are mentioned in posts', function () {
             var checkAssertions = function (result) {
                 assert.isUndefined(result);
             };
 
             return instanciateHexo()
                 .then(getHexoLocals)
-                .then(category)
+                .then(tag)
                 .call('get')
                 .then(checkAssertions);
         });
 
-        it('should generate sitemap category data', function () {
+        it('should generate sitemap tag data', function () {
             var checkAssertions = function (result) {
                 assert.isObject(result);
                 assert.isTrue(moment(result.lastModification).isSame(moment.utc([2015, 0, 2, 14])));
                 assert.isArray(result.items);
                 assert.lengthOf(result.items, 1);
-                assert.isTrue(_.some(result.items, {name: 'Category1'}));
+                assert.isTrue(_.some(result.items, {name: 'Tag1'}));
             };
 
             return instanciateHexo()
                 .then(insertPosts)
-                .spread(setPostCategory)
+                .spread(setPostTag)
                 .spread(getHexoLocals)
-                .then(category)
+                .then(tag)
                 .call('get')
                 .then(checkAssertions);
         });
