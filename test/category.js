@@ -4,8 +4,9 @@
     var Hexo = require('hexo'),
         path = require('path'),
         moment = require('moment'),
+        _ = require('lodash'),
         chai = require('chai'),
-        should = chai.should(),
+        assert = chai.assert,
         category = require('../lib/category');
 
     var setPostCategory = function (posts) {
@@ -19,8 +20,9 @@
                 generator = require(path.join(__dirname, '..', 'lib', 'generator')).bind(hexo),
                 locals,
                 checkAssertions = function (result) {
-                    result.should.be.instanceof(Array).and.have.lengthOf(2);
-                    result.should.not.contain({path: 'category-sitemap.xml'});
+                    assert.isArray(result);
+                    assert.lengthOf(result, 2);
+                    assert.isFalse(_.some(result, {path: 'category-sitemap.xml'}));
                 };
 
             locals = hexo.locals.toObject();
@@ -45,11 +47,11 @@
                     return locals;
                 },
                 checkAssertions = function (result) {
-                    result.items.should.be.instanceof(Array).and.have.lengthOf(1);
-
-                    //moment(result.lastModification).isSame(moment.utc([2015, 0, 2, 14])).should.be.ok();
-                    //result.items.should.contain({name: 'Category1'});
-                    //result.lastModification.should.be.equal(moment.utc([2015, 0, 2, 14]).toDate());
+                    assert.isObject(result);
+                    assert.isTrue(moment(result.lastModification).isSame(moment.utc([2015, 0, 2, 14])));
+                    assert.isArray(result.items);
+                    assert.lengthOf(result.items, 1);
+                    assert.isTrue(_.some(result.items, {name: 'Category1'}));
                 },
                 posts = [
                     {source: 'foo', slug: 'foo', path: 'foo', updated: moment.utc([2015, 0, 1, 8]).toDate()},
