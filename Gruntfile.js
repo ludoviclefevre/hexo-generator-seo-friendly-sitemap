@@ -105,7 +105,7 @@ module.exports = function (grunt) {
         });
     });
 
-    grunt.registerTask('test', ['nice-package', 'jshint', 'jscs', 'nice-package', 'mocha_istanbul:coverage', 'escomplex']);
+    grunt.registerTask('test', ['nice-package', 'jshint', 'jscs', 'mocha_istanbul:coverage', 'escomplex']);
     grunt.registerTask('travis', ['jshint', 'jscs', 'mocha_istanbul:coveralls']);
     grunt.registerTask('default', 'test');
 };
