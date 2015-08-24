@@ -1,7 +1,7 @@
-var merge = require('utils-merge'),
+var _ = require('lodash'),
     path = require('path'),
 
-    config = hexo.config.sitemap = merge({
+    config = hexo.config.sitemap = _.merge({
         path: 'sitemap.xml'
     }, hexo.config.sitemap);
 

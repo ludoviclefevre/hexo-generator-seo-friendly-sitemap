@@ -7,6 +7,7 @@
         path = require('path'),
         _ = require('lodash'),
         moment = require('moment'),
+        beautify = require('pretty-data').pd,
         Promise = require('bluebird'),
         fs = Promise.promisifyAll(require('fs')),
 
@@ -84,7 +85,8 @@
 
         it('should generate all sitemap files if posts, pages, categories and tags are defined', function () {
             hexo.config.sitemap = {
-                path: 'sitemap.xml'
+                path: 'sitemap.xml',
+                beautify: false
             };
 
             var expectedDirectory = path.join(__dirname, 'expected'),
@@ -130,8 +132,6 @@
                             indexSitemap.data.should.equal(buffer);
                         }),
                         expectedPostSitemap.then(function (buffer) {
-                            //fs.writeFileSync(expectedPostFilePath, buffer);
-
                             postSitemap.data.should.equal(buffer);
                         }),
                         expectedPageSitemap.then(function (buffer) {
@@ -150,34 +150,5 @@
             return generator(locals)
                 .then(checkAssertions);
         });
-
-        /*
-         it('should generate index sitemap with filename configured in _config.yml.', function () {
-         var expectedFilename = 'test.xml',
-         checkAssertions = function (result) {
-         var indexSitemap = _.find(result, {path: expectedFilename});
-         assert.isDefined(indexSitemap);
-         };
-
-         hexo.config.sitemap = {
-         path: expectedFilename
-         };
-
-         return generator(locals)
-         .then(checkAssertions);
-         });
-
-         it('should generate index sitemap with default filename if not configured in _config.yml.', function () {
-         var checkAssertions = function (result) {
-         var indexSitemap = _.find(result, {path: 'sitemap.xml'});
-         assert.isDefined(indexSitemap);
-         };
-
-         hexo.config.sitemap = null;
-
-         return generator(locals)
-         .then(checkAssertions);
-         });
-         */
     });
 })();
