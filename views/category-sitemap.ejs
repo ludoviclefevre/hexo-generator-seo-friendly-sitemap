@@ -5,7 +5,7 @@
         <changefreq>daily</changefreq>
         <priority>1</priority>
     </url>
-<% items.forEach(function(category){ %>
+<% data.items.forEach(function(category){ %>
     <url>
         <loc><%- encodeURI(category.permalink) %></loc>
         <lastmod><%= category.updated.toISOString() %></lastmod>

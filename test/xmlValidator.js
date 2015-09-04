@@ -28,12 +28,14 @@
             config: {
                 'url': 'http://yoursite.com'
             },
-            items: [
-                {
-                    'permalink': 'http://yoursite.com/categories/Cat1/',
-                    'updated': moment().toDate()
-                }
-            ]
+            data: {
+                items: [
+                    {
+                        'permalink': 'http://yoursite.com/categories/Cat1/',
+                        'updated': moment().toDate()
+                    }
+                ]
+            }
         };
 
         var readFileOptions = {

@@ -54,9 +54,9 @@
             var checkAssertions = function (result) {
                 assert.isObject(result);
                 assert.isTrue(moment(result.lastModification).isSame(moment.utc([2015, 0, 2, 14])));
-                assert.isArray(result.items);
-                assert.lengthOf(result.items, 1);
-                assert.isTrue(_.some(result.items, {name: 'Tag1'}));
+                assert.isArray(result.data.items);
+                assert.lengthOf(result.data.items, 1);
+                assert.isTrue(_.some(result.data.items, {name: 'Tag1'}));
             };
 
             return instanciateHexo()

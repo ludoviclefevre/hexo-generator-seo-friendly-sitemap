@@ -90,6 +90,21 @@ module.exports = function (grunt) {
                     blankLine: true
                 }
             }
+        },
+        lineending: {
+            dist: {
+                options: {
+                    overwrite: true,
+                    eol: 'lf'
+                },
+                files: {
+                    '': [
+                        'lib/**/*',
+                        'test/**/*',
+                        'views/**/*'
+                    ]
+                }
+            }
         }
     });
 
@@ -105,7 +120,8 @@ module.exports = function (grunt) {
         });
     });
 
-    grunt.registerTask('test', ['nice-package', 'jshint', 'jscs', 'mocha_istanbul:coverage', 'escomplex']);
+    grunt.registerTask('convertLineEnding', ['lineending']);
+    grunt.registerTask('test', ['jshint', 'jscs', 'mocha_istanbul:coverage', 'escomplex']);
     grunt.registerTask('travis', ['jshint', 'jscs', 'mocha_istanbul:coveralls']);
     grunt.registerTask('default', 'test');
 };

@@ -28,6 +28,7 @@
     "grunt-contrib-watch": "0.6.1",
     "grunt-escomplex": "0.0.3",
     "grunt-jscs": "2.1.0",
+    "grunt-lineending": "^0.2.4",
     "grunt-mocha-cli": "1.14.0",
     "grunt-mocha-istanbul": "3.0.1",
     "grunt-nice-package": "0.9.3",
