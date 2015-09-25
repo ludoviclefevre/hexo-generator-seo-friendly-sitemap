@@ -2,7 +2,6 @@
     'use strict';
 
     var Hexo = require('hexo'),
-        path = require('path'),
         moment = require('moment'),
         _ = require('lodash'),
         Promise = require('bluebird'),
