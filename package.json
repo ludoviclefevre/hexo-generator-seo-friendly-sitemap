@@ -11,7 +11,7 @@
     "url": "http://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap/issues"
   },
   "dependencies": {
-    "bluebird": "2.10.2",
+    "bluebird": "2.10.1",
     "ejs": "2.3.4",
     "hexo": "3.1.1",
     "lodash": "3.10.1",
