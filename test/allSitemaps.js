@@ -7,6 +7,7 @@
         path = require('path'),
         _ = require('lodash'),
         moment = require('moment'),
+        normalizeNewline = require('normalize-newline'),
         Promise = require('bluebird'),
         fs = Promise.promisifyAll(require('fs')),
 
@@ -19,10 +20,11 @@
         Page = hexo.model('Page'),
         Tag = hexo.model('Tag'),
         generator = require(path.join(__dirname, '../lib/generator')).bind(hexo),
+        photos = ['/images/img01.jpg', '/images/img02.jpg', '/images/img03.jpg'],
         posts = [
-            {source: 'foo', slug: 'foo', path: 'foo', updated: moment.utc([2015, 0, 1, 8]).toDate()},
-            {source: 'bar', slug: 'bar', path: 'bar', updated: moment.utc([2015, 0, 2, 14]).toDate()},
-            {source: 'baz', slug: 'baz', path: 'baz', updated: moment.utc([2015, 0, 3, 16]).toDate()}
+            {source: 'foo', slug: 'foo', path: 'foo', updated: moment.utc([2015, 0, 1, 8]).toDate(), photos: photos},
+            {source: 'bar', slug: 'bar', path: 'bar', updated: moment.utc([2015, 0, 2, 14]).toDate(), photos: photos},
+            {source: 'baz', slug: 'baz', path: 'baz', updated: moment.utc([2015, 0, 3, 16]).toDate(), photos: photos}
         ],
         pages = [
             {source: 'Page 1', slug: 'Page 1', updated: moment.utc([2014, 11, 10, 9]).toDate(), path: 'page1'},
@@ -128,20 +130,20 @@
 
                     return Promise.all([
                         expectedIndexSitemap.then(function (buffer) {
-                            indexSitemap.data.should.equal(buffer);
+                            normalizeNewline(indexSitemap.data).should.equal(normalizeNewline(buffer));
                         }),
                         expectedPostSitemap.then(function (buffer) {
-                            postSitemap.data.should.equal(buffer);
+                            normalizeNewline(postSitemap.data).should.equal(normalizeNewline(buffer));
                         }),
                         expectedPageSitemap.then(function (buffer) {
-                            pageSitemap.data.should.equal(buffer);
+                            normalizeNewline(pageSitemap.data).should.equal(normalizeNewline(buffer));
                         }),
 
                         expectedCategorySitemap.then(function (buffer) {
-                            categorySitemap.data.should.equal(buffer);
+                            normalizeNewline(categorySitemap.data).should.equal(normalizeNewline(buffer));
                         }),
                         expectedTagSitemap.then(function (buffer) {
-                            tagSitemap.data.should.equal(buffer);
+                            normalizeNewline(tagSitemap.data).should.equal(normalizeNewline(buffer));
                         })
                     ]);
                 };

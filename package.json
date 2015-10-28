@@ -38,7 +38,8 @@
     "mocha": "2.3.3",
     "rimraf": "2.4.3",
     "time-grunt": "1.2.2",
-    "xmldom": "0.1.19"
+    "xmldom": "0.1.19",
+    "normalize-newline": "1.0.2"
   },
   "engines": {
     "node": ">=0.10"
