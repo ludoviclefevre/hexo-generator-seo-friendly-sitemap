@@ -1,7 +1,7 @@
 {
   "name": "hexo-generator-seo-friendly-sitemap",
   "description": "SEO-friendly sitemap generator plugin for Hexo",
-  "version": "0.0.11-pre",
+  "version": "0.0.11",
   "author": {
     "name": "Ludovic LEFEVRE",
     "email": "contact@ludoviclefevre.fr",
