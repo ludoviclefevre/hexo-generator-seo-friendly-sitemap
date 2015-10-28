@@ -20,7 +20,7 @@
         Page = hexo.model('Page'),
         Tag = hexo.model('Tag'),
         generator = require(path.join(__dirname, '../lib/generator')).bind(hexo),
-        photos = ['/images/img01.jpg', '/images/img02.jpg', '/images/img03.jpg'],
+        photos = ['/images/img01.jpg', '/images/img02.jpg', 'http://anotherdomain/images/img03.jpg'],
         posts = [
             {source: 'foo', slug: 'foo', path: 'foo', updated: moment.utc([2015, 0, 1, 8]).toDate(), photos: photos},
             {source: 'bar', slug: 'bar', path: 'bar', updated: moment.utc([2015, 0, 2, 14]).toDate(), photos: photos},

@@ -13,7 +13,7 @@
         <priority>0.6</priority>
 <% item.photos.forEach(function(photo){ %>
         <image:image>
-            <image:loc><%- encodeURI(photo) %></image:loc>
+            <image:loc><%- encodeURI(url.resolve(config.url, photo)) %></image:loc>
             <image:caption><![CDATA[<%= config.url %>]]></image:caption>
         </image:image>
 <% }) %>

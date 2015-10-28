@@ -13,17 +13,17 @@
         <priority>0.6</priority>
 
         <image:image>
-            <image:loc>/images/img01.jpg</image:loc>
+            <image:loc>http://yoursite.com/images/img01.jpg</image:loc>
             <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
-            <image:loc>/images/img02.jpg</image:loc>
+            <image:loc>http://yoursite.com/images/img02.jpg</image:loc>
             <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
-            <image:loc>/images/img03.jpg</image:loc>
+            <image:loc>http://anotherdomain/images/img03.jpg</image:loc>
             <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
@@ -36,17 +36,17 @@
         <priority>0.6</priority>
 
         <image:image>
-            <image:loc>/images/img01.jpg</image:loc>
+            <image:loc>http://yoursite.com/images/img01.jpg</image:loc>
             <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
-            <image:loc>/images/img02.jpg</image:loc>
+            <image:loc>http://yoursite.com/images/img02.jpg</image:loc>
             <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
-            <image:loc>/images/img03.jpg</image:loc>
+            <image:loc>http://anotherdomain/images/img03.jpg</image:loc>
             <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
@@ -59,17 +59,17 @@
         <priority>0.6</priority>
 
         <image:image>
-            <image:loc>/images/img01.jpg</image:loc>
+            <image:loc>http://yoursite.com/images/img01.jpg</image:loc>
             <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
-            <image:loc>/images/img02.jpg</image:loc>
+            <image:loc>http://yoursite.com/images/img02.jpg</image:loc>
             <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
-            <image:loc>/images/img03.jpg</image:loc>
+            <image:loc>http://anotherdomain/images/img03.jpg</image:loc>
             <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
