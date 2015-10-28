@@ -11,7 +11,7 @@
     "url": "http://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap/issues"
   },
   "dependencies": {
-    "bluebird": "2.10.1",
+    "bluebird": "2.10.2",
     "ejs": "2.3.4",
     "hexo": "3.1.1",
     "lodash": "3.10.1",
@@ -27,8 +27,8 @@
     "grunt-contrib-nodeunit": "0.4.1",
     "grunt-contrib-watch": "0.6.1",
     "grunt-escomplex": "0.0.3",
-    "grunt-jscs": "2.1.0",
-    "grunt-lineending": "^0.2.4",
+    "grunt-jscs": "2.2.0",
+    "grunt-lineending": "0.2.4",
     "grunt-mocha-cli": "2.0.0",
     "grunt-mocha-istanbul": "3.0.1",
     "grunt-nice-package": "0.9.4",
