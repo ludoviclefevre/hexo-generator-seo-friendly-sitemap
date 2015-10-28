@@ -14,17 +14,14 @@
 
         <image:image>
             <image:loc>http://yoursite.com/images/img01.jpg</image:loc>
-            <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
             <image:loc>http://yoursite.com/images/img02.jpg</image:loc>
-            <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
             <image:loc>http://anotherdomain/images/img03.jpg</image:loc>
-            <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
     </url>
@@ -37,17 +34,14 @@
 
         <image:image>
             <image:loc>http://yoursite.com/images/img01.jpg</image:loc>
-            <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
             <image:loc>http://yoursite.com/images/img02.jpg</image:loc>
-            <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
             <image:loc>http://anotherdomain/images/img03.jpg</image:loc>
-            <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
     </url>
@@ -60,17 +54,14 @@
 
         <image:image>
             <image:loc>http://yoursite.com/images/img01.jpg</image:loc>
-            <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
             <image:loc>http://yoursite.com/images/img02.jpg</image:loc>
-            <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
         <image:image>
             <image:loc>http://anotherdomain/images/img03.jpg</image:loc>
-            <image:caption><![CDATA[http://yoursite.com]]></image:caption>
         </image:image>
 
     </url>
