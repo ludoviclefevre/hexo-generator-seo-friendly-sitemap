@@ -29,6 +29,10 @@ sitemap:
 
 - **path** - Index sitemap path.
 
+## Excluding pages or posts
+
+You can exclude pages or posts from the sitemap by adding `sitemap: false` to the relevant front-matter.
+
 ## License
 
 MIT © [Ludovic LEFEVRE](http://www.ludoviclefevre.fr)
