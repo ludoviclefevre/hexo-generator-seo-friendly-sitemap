@@ -78,6 +78,8 @@
     describe('SEO-friendly sitemap generator: All Sitemaps', function () {
 
         before(function () {
+            hexo.config.permalink = ':title';
+            hexo.init();
             return insertPosts()
                 .then(insertPages)
                 .then(insertTags)

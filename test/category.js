@@ -14,6 +14,8 @@
         hexo.config.sitemap = {
             path: 'sitemap.xml'
         };
+        hexo.config.permalink = ':title';
+        hexo.init();
         return Promise.resolve(hexo);
     };
 

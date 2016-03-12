@@ -7,7 +7,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/</loc>
+        <loc>http://yoursite.com/baz</loc>
         <lastmod>2015-01-03T16:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -27,7 +27,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/</loc>
+        <loc>http://yoursite.com/bar</loc>
         <lastmod>2015-01-02T14:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
@@ -47,7 +47,7 @@
     </url>
 
     <url>
-        <loc>http://yoursite.com/</loc>
+        <loc>http://yoursite.com/foo</loc>
         <lastmod>2015-01-01T08:00:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
