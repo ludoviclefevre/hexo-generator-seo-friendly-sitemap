@@ -117,7 +117,7 @@
 
                     should.exist(indexSitemap);
                     should.exist(indexSitemap.data);
-
+                    console.log(indexSitemap.data);
                     should.exist(postSitemap);
                     should.exist(postSitemap.data);
 

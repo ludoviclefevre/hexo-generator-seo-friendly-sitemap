@@ -3,9 +3,7 @@
 <% data.items.forEach(function(item){ %>
     <sitemap>
         <loc><%- encodeURI(item.url) %></loc>
-        <% if(item.lastModification != undefined) { %>
-        <lastmod><%= item.lastModification.toISOString() %></lastmod>
-        <% } %>
+        <% if(item.lastModification != undefined) { %><lastmod><%= item.lastModification.toISOString() %></lastmod><% } %>
     </sitemap>
 <% }) %>
 </sitemapindex>
