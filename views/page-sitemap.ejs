@@ -7,7 +7,7 @@
     </url>
     <% data.items.forEach(function(page){ %>
     <url>
-        <loc><%- encodeURI(page.permalink) %></loc>
+        <loc><%- encodeURI(page.permalink.replace('index.html', '')) %></loc>
         <lastmod><%= page.updated.toISOString() || page.date.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
