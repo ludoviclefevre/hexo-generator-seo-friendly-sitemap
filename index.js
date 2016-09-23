@@ -1,12 +1,12 @@
 var _ = require('lodash'),
-    path = require('path'),
+  path = require('path'),
 
-    config = hexo.config.sitemap = _.merge({
-        path: 'sitemap.xml'
-    }, hexo.config.sitemap);
+  config = hexo.config.sitemap = _.merge({
+    path: 'sitemap.xml'
+  }, hexo.config.sitemap);
 
 if (!path.extname(config.path)) {
-    config.path += '.xml';
+  config.path += '.xml';
 }
 
 hexo.extend.generator.register('sitemap', require('./lib/generator'));

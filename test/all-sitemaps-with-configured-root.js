@@ -74,11 +74,12 @@ var chai = require('chai'),
     return Promise.resolve(locals);
   };
 
-describe('SEO-friendly sitemap generator: All Sitemaps', function () {
+describe('SEO-friendly sitemap generator: All Sitemaps with configured root', function () {
 
   before(function () {
     hexo.config.permalink = ':title';
-    hexo.config.root = '/';
+    hexo.config.url = 'http://yoursite.com/rootpath';
+    hexo.config.root = '/rootpath/';
     hexo.init();
     return insertPosts()
       .then(insertPages)
@@ -94,11 +95,11 @@ describe('SEO-friendly sitemap generator: All Sitemaps', function () {
 
     var expectedDirectory = path.join(__dirname, 'expected'),
 
-      expectedIndexFilePath = path.join(expectedDirectory, 'full-index-sitemap.xml'),
-      expectedPostFilePath = path.join(expectedDirectory, 'full-post-sitemap.xml'),
-      expectedPageFilePath = path.join(expectedDirectory, 'full-page-sitemap.xml'),
-      expectedCategoryFilePath = path.join(expectedDirectory, 'full-category-sitemap.xml'),
-      expectedTagFilePath = path.join(expectedDirectory, 'full-tag-sitemap.xml'),
+      expectedIndexFilePath = path.join(expectedDirectory, 'with-configured-root/full-index-sitemap.xml'),
+      expectedPostFilePath = path.join(expectedDirectory, 'with-configured-root/full-post-sitemap.xml'),
+      expectedPageFilePath = path.join(expectedDirectory, 'with-configured-root/full-page-sitemap.xml'),
+      expectedCategoryFilePath = path.join(expectedDirectory, 'with-configured-root/full-category-sitemap.xml'),
+      expectedTagFilePath = path.join(expectedDirectory, 'with-configured-root/full-tag-sitemap.xml'),
 
       expectedIndexSitemap = fs.readFileAsync(expectedIndexFilePath, readFileOptions),
       expectedPostSitemap = fs.readFileAsync(expectedPostFilePath, readFileOptions),

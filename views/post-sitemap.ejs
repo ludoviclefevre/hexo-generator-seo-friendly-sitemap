@@ -7,13 +7,17 @@
     </url>
 <% data.items.forEach(function(item){ %>
     <url>
-        <loc><%- encodeURI(item.permalink) %></loc>
+        <loc><%- encodeURI(item.url) %></loc>
         <lastmod><%= item.updated.toISOString() || item.date.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 <% item.photos.forEach(function(photo){ %>
         <image:image>
+<% if(photo.indexOf('http')<0) { %>
+            <image:loc><%- encodeURI(data.urljoin(config.url, photo)) %></image:loc>
+<% } else { %>
             <image:loc><%- encodeURI(url.resolve(config.url, photo)) %></image:loc>
+<% } %>
         </image:image>
 <% }) %>
     </url>

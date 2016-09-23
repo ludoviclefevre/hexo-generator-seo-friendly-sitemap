@@ -3,5 +3,6 @@
     "requireVarDeclFirst": null,
     "requireMultipleVarDecl": null,
     "validateQuoteMarks": "'",
-    "validateLineBreaks": "LF"
+    "validateLineBreaks": "LF",
+    "validateIndentation": 2
 }
