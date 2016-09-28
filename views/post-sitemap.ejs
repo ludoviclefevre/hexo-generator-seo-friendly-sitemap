@@ -7,7 +7,7 @@
     </url>
 <% data.items.forEach(function(item){ %>
     <url>
-        <loc><%- encodeURI(item.url) %></loc>
+        <loc><%- encodeURI(data.urljoin(config.url, item.path)) %></loc>
         <lastmod><%= item.updated.toISOString() || item.date.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>

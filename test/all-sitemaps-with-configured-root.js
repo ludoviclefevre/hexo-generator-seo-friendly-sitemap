@@ -9,6 +9,7 @@ var chai = require('chai'),
   normalizeNewline = require('normalize-newline'),
   Promise = require('bluebird'),
   fs = Promise.promisifyAll(require('fs')),
+  helper = require('./helper'),
 
   readFileOptions = {
     encoding: 'utf8'
@@ -133,20 +134,19 @@ describe('SEO-friendly sitemap generator: All Sitemaps with configured root', fu
 
         return Promise.all([
           expectedIndexSitemap.then(function (buffer) {
-            normalizeNewline(indexSitemap.data).should.equal(normalizeNewline(buffer));
+            helper.removeEmptyLines(normalizeNewline(indexSitemap.data)).should.equal(helper.removeEmptyLines(normalizeNewline(buffer)));
           }),
           expectedPostSitemap.then(function (buffer) {
-            normalizeNewline(postSitemap.data).should.equal(normalizeNewline(buffer));
+            helper.removeEmptyLines(normalizeNewline(postSitemap.data)).should.equal(helper.removeEmptyLines(normalizeNewline(buffer)));
           }),
           expectedPageSitemap.then(function (buffer) {
-            normalizeNewline(pageSitemap.data).should.equal(normalizeNewline(buffer));
+            helper.removeEmptyLines(normalizeNewline(pageSitemap.data)).should.equal(helper.removeEmptyLines(normalizeNewline(buffer)));
           }),
-
           expectedCategorySitemap.then(function (buffer) {
-            normalizeNewline(categorySitemap.data).should.equal(normalizeNewline(buffer));
+            helper.removeEmptyLines(normalizeNewline(categorySitemap.data)).should.equal(helper.removeEmptyLines(normalizeNewline(buffer)));
           }),
           expectedTagSitemap.then(function (buffer) {
-            normalizeNewline(tagSitemap.data).should.equal(normalizeNewline(buffer));
+            helper.removeEmptyLines(normalizeNewline(tagSitemap.data)).should.equal(helper.removeEmptyLines(normalizeNewline(buffer)));
           })
         ]);
       };
