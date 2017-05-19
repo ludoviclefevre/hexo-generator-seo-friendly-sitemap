@@ -8,11 +8,14 @@ var Hexo = require('hexo'),
   assert = chai.assert,
   tag = require('../lib/tag');
 
-var instanciateHexo = function () {
+var instanciateHexo = function (tag) {
   var hexo = new Hexo(__dirname, {silent: true});
   hexo.config.sitemap = {
     path: 'sitemap.xml'
   };
+  if (tag !== undefined) {
+    hexo.config.sitemap.tag = tag;
+  }
   hexo.config.permalink = ':title';
   hexo.init();
   return Promise.resolve(hexo);
@@ -64,6 +67,20 @@ describe('SEO-friendly sitemap generator', function () {
     };
 
     return instanciateHexo()
+      .then(insertPosts)
+      .spread(setPostTag)
+      .spread(getHexoLocalsAndConfig)
+      .then(applyTag)
+      .call('get')
+      .then(checkAssertions);
+  });
+
+  it('should not generate sitemap tag file if config.sitemap.tag set to false', function () {
+    var checkAssertions = function (result) {
+      assert.isUndefined(result);
+    };
+
+    return instanciateHexo(false)
       .then(insertPosts)
       .spread(setPostTag)
       .spread(getHexoLocalsAndConfig)

@@ -8,11 +8,14 @@ var Hexo = require('hexo'),
   assert = chai.assert,
   category = require('../lib/category');
 
-var instanciateHexo = function () {
+var instanciateHexo = function (category) {
   var hexo = new Hexo(__dirname, {silent: true});
   hexo.config.sitemap = {
     path: 'sitemap.xml'
   };
+  if (category !== undefined) {
+    hexo.config.sitemap.category = category;
+  }
   hexo.config.permalink = ':title';
   hexo.init();
   return Promise.resolve(hexo);
@@ -64,6 +67,20 @@ describe('SEO-friendly sitemap generator', function () {
     };
 
     return instanciateHexo()
+      .then(insertPosts)
+      .spread(setPostCategory)
+      .spread(getHexoLocalsAndConfig)
+      .then(applyCategory)
+      .call('get')
+      .then(checkAssertions);
+  });
+
+  it('should not generate sitemap category file if config.sitemap.category set to false', function () {
+    var checkAssertions = function (result) {
+      assert.isUndefined(result);
+    };
+
+    return instanciateHexo(false)
       .then(insertPosts)
       .spread(setPostCategory)
       .spread(getHexoLocalsAndConfig)
