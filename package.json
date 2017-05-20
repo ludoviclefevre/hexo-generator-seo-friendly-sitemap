@@ -31,7 +31,7 @@
     "grunt-lineending": "0.2.4",
     "grunt-mocha-cli": "2.0.0",
     "grunt-mocha-istanbul": "3.0.1",
-    "grunt-nice-package": "0.10.2",
+    "grunt-nice-package": "^0.10.4",
     "hexo": "^3.2.0",
     "istanbul": "0.4.2",
     "jshint-stylish": "2.1.0",

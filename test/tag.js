@@ -8,11 +8,14 @@ var Hexo = require('hexo'),
   assert = chai.assert,
   tag = require('../lib/tag');
 
-var instanciateHexo = function () {
+var instanciateHexo = function (tag) {
   var hexo = new Hexo(__dirname, {silent: true});
   hexo.config.sitemap = {
     path: 'sitemap.xml'
   };
+  if (tag !== undefined) {
+    hexo.config.sitemap.tag = tag;
+  }
   hexo.config.permalink = ':title';
   hexo.init();
   return Promise.resolve(hexo);
@@ -33,19 +36,23 @@ var setPostTag = function (hexo, posts) {
   return [hexo, post.setTags(['Tag1'])];
 };
 
-var getHexoLocals = function (hexo) {
-  return Promise.resolve(hexo.locals.toObject());
+var getHexoLocalsAndConfig = function (hexo) {
+  return Promise.resolve([hexo.locals.toObject(), hexo.config]);
 };
 
 describe('SEO-friendly sitemap generator', function () {
+  var applyTag = function (args) {
+    return tag.apply(null, args);
+  };
+
   it('should not generate sitemap tag file if no tags are mentioned in posts', function () {
     var checkAssertions = function (result) {
       assert.isUndefined(result);
     };
 
     return instanciateHexo()
-      .then(getHexoLocals)
-      .then(tag)
+      .then(getHexoLocalsAndConfig)
+      .then(applyTag)
       .call('get')
       .then(checkAssertions);
   });
@@ -62,8 +69,22 @@ describe('SEO-friendly sitemap generator', function () {
     return instanciateHexo()
       .then(insertPosts)
       .spread(setPostTag)
-      .spread(getHexoLocals)
-      .then(tag)
+      .spread(getHexoLocalsAndConfig)
+      .then(applyTag)
+      .call('get')
+      .then(checkAssertions);
+  });
+
+  it('should not generate sitemap tag file if config.sitemap.tag set to false', function () {
+    var checkAssertions = function (result) {
+      assert.isUndefined(result);
+    };
+
+    return instanciateHexo(false)
+      .then(insertPosts)
+      .spread(setPostTag)
+      .spread(getHexoLocalsAndConfig)
+      .then(applyTag)
       .call('get')
       .then(checkAssertions);
   });

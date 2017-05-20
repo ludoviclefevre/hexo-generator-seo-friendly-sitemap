@@ -27,6 +27,15 @@ sitemap:
     path: sitemap.xml
 ```
 
+You can exclude tag or category page from the sitemap by adding `tag: false` or `category: false` under the `sitemap` configuration.
+
+``` yaml
+sitemap:
+    path: sitemap.xml
+    tag: false
+    category: false
+```
+
 - **path** - Index sitemap path.
 
 ## Excluding pages or posts

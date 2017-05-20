@@ -8,11 +8,14 @@ var Hexo = require('hexo'),
   assert = chai.assert,
   category = require('../lib/category');
 
-var instanciateHexo = function () {
+var instanciateHexo = function (category) {
   var hexo = new Hexo(__dirname, {silent: true});
   hexo.config.sitemap = {
     path: 'sitemap.xml'
   };
+  if (category !== undefined) {
+    hexo.config.sitemap.category = category;
+  }
   hexo.config.permalink = ':title';
   hexo.init();
   return Promise.resolve(hexo);
@@ -33,19 +36,23 @@ var setPostCategory = function (hexo, posts) {
   return [hexo, post.setCategories(['Category1'])];
 };
 
-var getHexoLocals = function (hexo) {
-  return Promise.resolve(hexo.locals.toObject());
+var getHexoLocalsAndConfig = function (hexo) {
+  return Promise.resolve([hexo.locals.toObject(), hexo.config]);
 };
 
 describe('SEO-friendly sitemap generator', function () {
+  var applyCategory = function (args) {
+    return category.apply(null, args);
+  };
+
   it('should not generate sitemap category file if no categories are mentioned in posts', function () {
     var checkAssertions = function (result) {
       assert.isUndefined(result);
     };
 
     return instanciateHexo()
-      .then(getHexoLocals)
-      .then(category)
+      .then(getHexoLocalsAndConfig)
+      .then(applyCategory)
       .call('get')
       .then(checkAssertions);
   });
@@ -62,8 +69,22 @@ describe('SEO-friendly sitemap generator', function () {
     return instanciateHexo()
       .then(insertPosts)
       .spread(setPostCategory)
-      .spread(getHexoLocals)
-      .then(category)
+      .spread(getHexoLocalsAndConfig)
+      .then(applyCategory)
+      .call('get')
+      .then(checkAssertions);
+  });
+
+  it('should not generate sitemap category file if config.sitemap.category set to false', function () {
+    var checkAssertions = function (result) {
+      assert.isUndefined(result);
+    };
+
+    return instanciateHexo(false)
+      .then(insertPosts)
+      .spread(setPostCategory)
+      .spread(getHexoLocalsAndConfig)
+      .then(applyCategory)
       .call('get')
       .then(checkAssertions);
   });
