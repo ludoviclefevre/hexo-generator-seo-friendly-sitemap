@@ -34,9 +34,11 @@ sitemap:
     path: sitemap.xml
     tag: false
     category: false
+    index_i18n: false
 ```
 
 - **path** - Index sitemap path.
+- **index_i18n** - Generate only links to localized index pages like: `https://yoursite.com/en`, `https://yoursite.com/es`
 
 ## Excluding pages or posts
 

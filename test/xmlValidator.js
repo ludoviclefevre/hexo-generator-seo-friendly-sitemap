@@ -28,6 +28,9 @@ var getCompiledContent = function (type) {
       'url': 'http://yoursite.com'
     },
     data: {
+      indexPages: [{
+        url: 'http://yoursite.com'
+      }],
       items: [
         {
           'permalink': 'http://yoursite.com/categories/Cat1/',
