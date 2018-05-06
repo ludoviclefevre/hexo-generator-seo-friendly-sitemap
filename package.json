@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "bluebird": "^3.3.1",
-    "ejs": "2.3.4",
+    "ejs": "2.6.1",
     "lodash": "^4.5.0",
     "moment": "~2.11.2",
     "pretty-data": "0.40.0",
