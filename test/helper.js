@@ -1,5 +1,3 @@
-'use strict';
-
 var stripIndent = function (str) {
   return str.replace(/^\s+/mg, '');
 };

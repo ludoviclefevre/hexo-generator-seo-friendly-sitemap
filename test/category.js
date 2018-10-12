@@ -1,5 +1,3 @@
-'use strict';
-
 var Hexo = require('hexo'),
   moment = require('moment'),
   _ = require('lodash'),
