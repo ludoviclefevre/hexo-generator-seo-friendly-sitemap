@@ -1,5 +1,4 @@
 {
-    "strict": true,
     "node": true,
     "quotmark": "single",
     "mocha": true,

@@ -1,5 +1,3 @@
-'use strict';
-
 var moment = require('moment'),
   path = require('path'),
   _ = require('lodash'),

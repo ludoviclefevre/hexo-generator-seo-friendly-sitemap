@@ -1,5 +1,3 @@
-'use strict';
-
 var chai = require('chai'),
   should = chai.should(),
   Hexo = require('hexo'),
