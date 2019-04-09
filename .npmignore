@@ -11,3 +11,4 @@ tmp/
 Gruntfile.js
 appveyor.yml
 package-lock.json
+.DS_Store
