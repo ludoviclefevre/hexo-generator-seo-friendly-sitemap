@@ -10,3 +10,4 @@ tmp/
 .codeclimate.yml
 Gruntfile.js
 appveyor.yml
+package-lock.json
