@@ -1,10 +1,9 @@
 # hexo-generator-seo-friendly-sitemap
 
 [![Build Status][travis-image]][travis-url]
-[![Coverage Status][coveralls-image]][coveralls-url]
 [![Dependency Status][daviddm-url]][daviddm-image]
 [![Code Climate](https://codeclimate.com/github/ludoviclefevre/hexo-generator-seo-friendly-sitemap/badges/gpa.svg)](https://codeclimate.com/github/ludoviclefevre/hexo-generator-seo-friendly-sitemap)
-[![Codacy Badge](https://www.codacy.com/project/badge/afb430e84ace4295acb02b9f7e70566b)](https://www.codacy.com/app/contact_18/hexo-generator-seo-friendly-sitemap)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/afb430e84ace4295acb02b9f7e70566b)](https://www.codacy.com/app/contact_18/hexo-generator-seo-friendly-sitemap?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ludoviclefevre/hexo-generator-seo-friendly-sitemap&amp;utm_campaign=Badge_Grade)
 
 Generate SEO-friendly sitemap.
 
