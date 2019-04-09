@@ -69,6 +69,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "travis": "grunt travis"
+    "travis": "grunt travis",
+    "postversion": "git push && git push --tags"
   }
 }
