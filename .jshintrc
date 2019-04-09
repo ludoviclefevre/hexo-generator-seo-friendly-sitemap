@@ -1,9 +1,0 @@
-{
-    "node": true,
-    "quotmark": "single",
-    "mocha": true,
-    "globals": {
-        "Promise": true,
-        "hexo": true
-    }
-}
