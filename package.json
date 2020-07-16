@@ -13,7 +13,7 @@
   "dependencies": {
     "bluebird": "3.5.4",
     "ejs": "2.6.1",
-    "lodash": "4.17.12",
+    "lodash": "4.17.19",
     "moment": "2.24.0",
     "pretty-data": "0.40.0",
     "url-join": "4.0.0"
