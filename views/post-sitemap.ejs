@@ -7,7 +7,7 @@
         <loc><%- encodeURLAndEscape(data.urljoin(config.url, item.path)) %></loc>
         <lastmod><%= item.updated.toISOString() || item.date.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
+        <priority><%= item.sitemap_priority || (config.sitemap && config.sitemap.post_priority) || 0.6 %></priority>
 <% item.photos.forEach(function(photo){ %>
         <image:image>
 <% if(photo.indexOf('http')<0) { %>
