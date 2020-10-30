@@ -3,12 +3,14 @@
 <% include encodeURLAndEscape.ejs %>
 <% include root-page.ejs %>
     <% data.items.forEach(function(page){ %>
+    <% if (page.sitemap_priority == undefined || page.sitemap_priority > 0) { %>
     <url>
         <loc><%- encodeURLAndEscape(page.permalink.replace('index.html', '')) %></loc>
         <lastmod><%= page.updated.toISOString() || page.date.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
-        <priority>0.8</priority>
+        <priority><%= page.sitemap_priority || (config.sitemap && config.sitemap.page_priority) || 0.8 %></priority>
     </url>
+    <% } %>
     <% }) %>
 </urlset>
 <% include meta %>
