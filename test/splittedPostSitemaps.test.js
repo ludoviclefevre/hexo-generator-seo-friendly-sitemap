@@ -1,4 +1,4 @@
-const Hexo = require('hexo'),
+let Hexo = require('hexo'),
   path = require('path'),
   _ = require('lodash'),
   moment = require('moment'),
@@ -26,46 +26,37 @@ const Hexo = require('hexo'),
     { source: 'Page 3', slug: 'Page 3', updated: moment.utc([2014, 11, 20, 11]).toDate(), path: 'page3' }
   ],
   tags = [{ name: 'footag', path: 'footag' }],
+  locals,
   setPostCategories = function(post) {
-    console.log('setPostCategories')
     return post.setCategories(['Cat1', 'Cat2', 'Cat3'])
   },
   setPostTags = function(post) {
-    console.log('setPostTags')
     return post.setTags(['Tag1', 'Tag2', 'Tag3'])
   },
   setPostCategoriesAndTags = function(posts) {
-    console.log('setPostCategoriesAndTags')
     const post = posts[0]
     return setPostCategories(post)
       .return(post)
       .then(setPostTags)
   },
   insertPosts = function() {
-    console.log('insertPosts')
     return Post.insert(posts).then(setPostCategoriesAndTags)
   },
   insertPages = function() {
-    console.log('insertPages')
     return Page.insert(pages)
   },
   insertTags = function() {
-    console.log('insertTags')
     return Tag.insert(tags)
   },
   setHexoLocals = function() {
-    console.log('setHexoLocals')
     locals = hexo.locals.toObject()
     return Promise.resolve(locals)
   }
 
-let locals
-
-describe('SEO-friendly sitemap generator: All Sitemaps with configured root', function() {
+describe('SEO-friendly sitemap generator: All Sitemaps with splitted post sitemap', function() {
   beforeAll(function() {
     hexo.config.permalink = ':title'
-    hexo.config.url = 'http://yoursite.com/rootpath'
-    hexo.config.root = '/rootpath/'
+    hexo.config.root = '/'
     hexo.init()
     return insertPosts()
       .then(insertPages)
@@ -73,18 +64,19 @@ describe('SEO-friendly sitemap generator: All Sitemaps with configured root', fu
       .then(setHexoLocals)
   })
 
-  it('should generate all sitemap files if posts, pages, categories and tags are defined', function() {
+  it('should generate all sitemap files if splitted posts, pages, categories and tags are defined', function() {
     hexo.config.sitemap = {
       path: 'sitemap.xml',
-      beautify: false
+      beautify: false,
+      urlLimit: 1
     }
 
     const expectedDirectory = path.join(__dirname, 'expected'),
-      expectedIndexFilePath = path.join(expectedDirectory, 'with-configured-root/full-index-sitemap.xml'),
-      expectedPostFilePath = path.join(expectedDirectory, 'with-configured-root/full-post-sitemap.xml'),
-      expectedPageFilePath = path.join(expectedDirectory, 'with-configured-root/full-page-sitemap.xml'),
-      expectedCategoryFilePath = path.join(expectedDirectory, 'with-configured-root/full-category-sitemap.xml'),
-      expectedTagFilePath = path.join(expectedDirectory, 'with-configured-root/full-tag-sitemap.xml'),
+      expectedIndexFilePath = path.join(expectedDirectory, 'splitted-index-sitemap.xml'),
+      expectedPostFilePath = path.join(expectedDirectory, 'splitted-post-1-sitemap.xml'),
+      expectedPageFilePath = path.join(expectedDirectory, 'full-page-sitemap.xml'),
+      expectedCategoryFilePath = path.join(expectedDirectory, 'full-category-sitemap.xml'),
+      expectedTagFilePath = path.join(expectedDirectory, 'full-tag-sitemap.xml'),
       expectedIndexSitemap = fs.readFileAsync(expectedIndexFilePath, readFileOptions),
       expectedPostSitemap = fs.readFileAsync(expectedPostFilePath, readFileOptions),
       expectedPageSitemap = fs.readFileAsync(expectedPageFilePath, readFileOptions),
@@ -92,15 +84,18 @@ describe('SEO-friendly sitemap generator: All Sitemaps with configured root', fu
       expectedTagSitemap = fs.readFileAsync(expectedTagFilePath, readFileOptions),
       checkAssertions = function(result) {
         expect(Array.isArray(result)).toBe(true)
-
+        console.log('caca', result)
         const indexSitemap = _.find(result, { path: 'sitemap.xml' }),
-          postSitemap = _.find(result, { path: 'post-sitemap.xml' }),
+          postSitemap = _.find(result, { path: 'post-sitemap-1.xml' }),
           pageSitemap = _.find(result, { path: 'page-sitemap.xml' }),
           categorySitemap = _.find(result, { path: 'category-sitemap.xml' }),
           tagSitemap = _.find(result, { path: 'tag-sitemap.xml' })
 
+        expect(tagSitemap).toBeDefined()
+
         expect(indexSitemap).toBeDefined()
         expect(indexSitemap.data).toBeDefined()
+
         expect(postSitemap).toBeDefined()
         expect(postSitemap.data).toBeDefined()
 

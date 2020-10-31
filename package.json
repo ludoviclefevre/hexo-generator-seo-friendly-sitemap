@@ -1,7 +1,7 @@
 {
   "name": "hexo-generator-seo-friendly-sitemap",
   "description": "SEO-friendly sitemap generator plugin for Hexo",
-  "version": "0.0.25",
+  "version": "0.1.0-pre",
   "author": {
     "name": "Ludovic LEFEVRE",
     "email": "contact@ludoviclefevre.fr",
@@ -9,6 +9,9 @@
   },
   "bugs": {
     "url": "http://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap/issues"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   },
   "dependencies": {
     "bluebird": "3.5.4",

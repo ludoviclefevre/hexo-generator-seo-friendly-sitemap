@@ -1,5 +1,5 @@
 'use strict';
-var _ = require('lodash'),
+const _ = require('lodash'),
   path = require('path'),
 
   config = hexo.config.sitemap = _.merge({
