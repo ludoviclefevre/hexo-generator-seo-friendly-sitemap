@@ -10,6 +10,9 @@
   "bugs": {
     "url": "http://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap/issues"
   },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
   "dependencies": {
     "bluebird": "3.5.4",
     "ejs": "2.6.1",
