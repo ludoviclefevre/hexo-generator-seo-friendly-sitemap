@@ -28,34 +28,27 @@ let Hexo = require('hexo'),
   tags = [{ name: 'footag', path: 'footag' }],
   locals,
   setPostCategories = function(post) {
-    console.log('setPostCategories')
     return post.setCategories(['Cat1', 'Cat2', 'Cat3'])
   },
   setPostTags = function(post) {
-    console.log('setPostTags')
     return post.setTags(['Tag1', 'Tag2', 'Tag3'])
   },
   setPostCategoriesAndTags = function(posts) {
-    console.log('setPostCategoriesAndTags')
-    var post = posts[0]
+    const post = posts[0]
     return setPostCategories(post)
       .return(post)
       .then(setPostTags)
   },
   insertPosts = function() {
-    console.log('insertPosts')
     return Post.insert(posts).then(setPostCategoriesAndTags)
   },
   insertPages = function() {
-    console.log('insertPages')
     return Page.insert(pages)
   },
   insertTags = function() {
-    console.log('insertTags')
     return Tag.insert(tags)
   },
   setHexoLocals = function() {
-    console.log('setHexoLocals')
     locals = hexo.locals.toObject()
     return Promise.resolve(locals)
   }
@@ -77,7 +70,7 @@ describe('SEO-friendly sitemap generator: All Sitemaps', function() {
       beautify: false
     }
 
-    var expectedDirectory = path.join(__dirname, 'expected'),
+    const expectedDirectory = path.join(__dirname, 'expected'),
       expectedIndexFilePath = path.join(expectedDirectory, 'full-index-sitemap.xml'),
       expectedPostFilePath = path.join(expectedDirectory, 'full-post-sitemap.xml'),
       expectedPageFilePath = path.join(expectedDirectory, 'full-page-sitemap.xml'),
@@ -91,7 +84,7 @@ describe('SEO-friendly sitemap generator: All Sitemaps', function() {
       checkAssertions = function(result) {
         expect(Array.isArray(result)).toBe(true)
 
-        var indexSitemap = _.find(result, { path: 'sitemap.xml' }),
+        const indexSitemap = _.find(result, { path: 'sitemap.xml' }),
           postSitemap = _.find(result, { path: 'post-sitemap.xml' }),
           pageSitemap = _.find(result, { path: 'page-sitemap.xml' }),
           categorySitemap = _.find(result, { path: 'category-sitemap.xml' }),

@@ -1,4 +1,4 @@
-var moment = require('moment'),
+const moment = require('moment'),
   path = require('path'),
   _ = require('lodash'),
   ejs = require('ejs'),
@@ -19,10 +19,10 @@ describe('SEO-friendly sitemap generator: ', function() {
   })
 })
 
-var getCompiledContent = function(type) {
-  var filePath = _(views).find('type', type).path
+const getCompiledContent = function(type) {
+  const filePath = _(views).find('type', type).path
 
-  var boundData = {
+  const boundData = {
     config: {
       url: 'http://yoursite.com'
     },
@@ -36,18 +36,18 @@ var getCompiledContent = function(type) {
     }
   }
 
-  var readFileOptions = {
+  const readFileOptions = {
     encoding: 'utf8'
   }
   return fs.readFileAsync(filePath, readFileOptions).then(function(content) {
-    var compiledTemplate = ejs.compile(content, {
+    const compiledTemplate = ejs.compile(content, {
       filename: filePath
     })
     return compiledTemplate(boundData)
   })
 }
 
-var xmlValidator = function(xml) {
+const xmlValidator = function(xml) {
   return new Promise(function(resolve, reject) {
     new DOMParser({
       locator: {},
