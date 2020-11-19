@@ -84,7 +84,7 @@ describe('SEO-friendly sitemap generator: All Sitemaps with splitted post sitema
       expectedTagSitemap = fs.readFileAsync(expectedTagFilePath, readFileOptions),
       checkAssertions = function(result) {
         expect(Array.isArray(result)).toBe(true)
-        console.log('caca', result)
+
         const indexSitemap = _.find(result, { path: 'sitemap.xml' }),
           postSitemap = _.find(result, { path: 'post-sitemap-1.xml' }),
           pageSitemap = _.find(result, { path: 'page-sitemap.xml' }),

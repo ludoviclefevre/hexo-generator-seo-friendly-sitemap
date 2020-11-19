@@ -67,7 +67,11 @@ describe('SEO-friendly sitemap generator: All Sitemaps', function() {
   it('should generate all sitemap files if posts, pages, categories and tags are defined', function() {
     hexo.config.sitemap = {
       path: 'sitemap.xml',
-      beautify: false
+      beautify: false,
+      additionalUrl: {
+        filename: 'web-story-sitemap.xml',
+        lastModification: moment.utc([2014, 11, 10, 9]).toDate()
+      }
     }
 
     const expectedDirectory = path.join(__dirname, 'expected'),
