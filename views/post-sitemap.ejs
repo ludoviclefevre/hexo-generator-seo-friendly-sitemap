@@ -5,7 +5,7 @@
 <% data.items.forEach(function(item){ %>
     <url>
         <loc><%- encodeURLAndEscape(data.urljoin(config.url, item.path)) %></loc>
-        <lastmod><%= item.updated.toISOString() || item.date.toISOString() %></lastmod>
+        <lastmod><%= (item.updated || item.date).toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority><%= item.sitemap_priority || (config.sitemap && config.sitemap.post_priority) || 0.6 %></priority>
 <% item.photos.forEach(function(photo){ %>

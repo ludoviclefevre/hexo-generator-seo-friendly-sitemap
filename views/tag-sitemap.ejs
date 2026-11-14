@@ -4,7 +4,7 @@
 <% data.items.forEach(function(tag){ %>
     <url>
         <loc><%- tag.permalink %></loc>
-        <lastmod><%= tag.updated.toISOString() %></lastmod>
+        <lastmod><%= (tag.updated || tag.date).toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
