@@ -5,7 +5,7 @@
 <% data.items.forEach(function(category){ %>
     <url>
         <loc><%- encodeURLAndEscape(category.permalink) %></loc>
-        <lastmod><%= category.updated.toISOString() %></lastmod>
+        <lastmod><%= (category.updated || category.date).toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
