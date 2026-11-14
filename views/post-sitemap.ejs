@@ -4,7 +4,7 @@
 <% include root-page.ejs %>
 <% data.items.forEach(function(item){ %>
     <url>
-        <loc><%- encodeURLAndEscape(data.urljoin(config.url, item.path)) %></loc>
+        <loc><%- encodeURLAndEscape(lowerCaseLoc(data.urljoin(config.url, item.path))) %></loc>
         <lastmod><%= item.updated.toISOString() || item.date.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority><%= item.sitemap_priority || (config.sitemap && config.sitemap.post_priority) || 0.6 %></priority>

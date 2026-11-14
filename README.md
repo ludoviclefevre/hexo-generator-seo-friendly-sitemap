@@ -36,6 +36,7 @@ sitemap:
 ```
 
 - **path** - Index sitemap path.
+- **lowercase_urls** - URLs in the sitemaps are lowercased by default. Set `lowercase_urls: false` to keep the original case.
 
 ## Excluding pages or posts
 

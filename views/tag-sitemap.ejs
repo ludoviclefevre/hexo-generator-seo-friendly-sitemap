@@ -3,7 +3,7 @@
 <% include encodeURLAndEscape.ejs %>
 <% data.items.forEach(function(tag){ %>
     <url>
-        <loc><%- tag.permalink %></loc>
+        <loc><%- lowerCaseLoc(tag.permalink) %></loc>
         <lastmod><%= tag.updated.toISOString() %></lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
